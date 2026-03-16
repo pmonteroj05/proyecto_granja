@@ -1,22 +1,23 @@
 export default class Planta{
-    #semilla;
+    #nombre;
+    #numSemilla;
     #tiempoMadur;
     #fechaCultivo;
     #tiempoRecog;
     #cantFrutos;
     #idParcela;
 
-    constructor(semilla, tiempoMadur, fechaCultivo, tiempoRecog, cantFrutos, idParcela){
-        this.#semilla = semilla;
+    constructor(nombre, tiempoMadur, tiempoRecog, cantFrutos){
+        this.#nombre = nombre;
+        this.#numSemilla = 150;
         this.#tiempoMadur = tiempoMadur;
         this.#fechaCultivo = fechaCultivo;
         this.#tiempoRecog = tiempoRecog;
         this.#cantFrutos = cantFrutos;
-        this.#idParcela = idParcela;
     }
 
     get tiempoRest(){
-        return this.#tiempoMadur - this.#fechaCultivo;
+        return this.#tiempoMadur - this.#tiempoRecog;
     }
 
     get estado(){
@@ -27,6 +28,6 @@ export default class Planta{
         else if (this.#tiempoRecog != 0)
             return "Madura";
         else
-            return "Podrida";
+            return "Inicial";
     }
 }
