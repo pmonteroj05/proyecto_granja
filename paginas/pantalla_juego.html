@@ -14,8 +14,6 @@
         <h1>GRANJA</h1>
         
         <div id="contenedor">
-            
-
             <div class="inventario">
                 <a href="./tienda.html"><button class="btn-tienda"><img src="/recursos/pantalla_juego/tienda_icono.png" alt="tienda"></button></a>
                 <button class="btn-semilla"><img src="/recursos/pantalla_juego/semillero.png" alt="semillero"></button>
@@ -25,34 +23,35 @@
 
             <div id="huerto">
                 <div class="filaA">
-                    <label class="region"><input type="radio" name="cuadricula" value="0"><span class="celda-vista"></span></label>
-                    <label class="region"><input type="radio" name="cuadricula" value="1"><span class="celda-vista"></span></label>
-                    <label class="region"><input type="radio" name="cuadricula" value="2"><span class="celda-vista"></span></label>
-                    <label class="region"><input type="radio" name="cuadricula" value="3"><span class="celda-vista"></span></label>
+                    <button class="parcela" data-indice="0"><span class="celda-vista"></span></button>
+                    <button class="parcela" data-indice="1"><span class="celda-vista"></span></button>
+                    <button class="parcela" data-indice="2"><span class="celda-vista"></span></button>
+                    <button class="parcela" data-indice="3"><span class="celda-vista"></span></button>
                 </div>
                 <div class="filaB">
-                    <label class="region"><input type="radio" name="cuadricula" value="4"><span class="celda-vista"></span></label>
-                    <label class="region"><input type="radio" name="cuadricula" value="5"><span class="celda-vista"></span></label>
-                    <label class="region"><input type="radio" name="cuadricula" value="6"><span class="celda-vista"></span></label>
-                    <label class="region"><input type="radio" name="cuadricula" value="7"><span class="celda-vista"></span></label>
+                    <button class="parcela" data-indice="4"><span class="celda-vista"></span></button>
+                    <button class="parcela" data-indice="5"><span class="celda-vista"></span></button>
+                    <button class="parcela" data-indice="6"><span class="celda-vista"></span></button>
+                    <button class="parcela" data-indice="7"><span class="celda-vista"></span></button>
                 </div>
                 <div class="filaC">
-                    <label class="region"><input type="radio" name="cuadricula" value="8"><span class="celda-vista"></span></label>
-                    <label class="region"><input type="radio" name="cuadricula" value="9"><span class="celda-vista"></span></label>
-                    <label class="region"><input type="radio" name="cuadricula" value="10"><span class="celda-vista"></span></label>
-                    <label class="region"><input type="radio" name="cuadricula" value="11"><span class="celda-vista"></span></label>
+                    <button class="parcela" data-indice="8"><span class="celda-vista"></span></button>
+                    <button class="parcela" data-indice="9"><span class="celda-vista"></span></button>
+                    <button class="parcela" data-indice="10"><span class="celda-vista"></span></button>
+                    <button class="parcela" data-indice="11"><span class="celda-vista"></span></button>
                 </div>
                 <div class="filaD">
-                    <label class="region"><input type="radio" name="cuadricula" value="12"><span class="celda-vista"></span></label>
-                    <label class="region"><input type="radio" name="cuadricula" value="13"><span class="celda-vista"></span></label>
-                    <label class="region"><input type="radio" name="cuadricula" value="14"><span class="celda-vista"></span></label>
-                    <label class="region"><input type="radio" name="cuadricula" value="15"><span class="celda-vista"></span></label>
+                    <button class="parcela" data-indice="12"><span class="celda-vista"></span></button>
+                    <button class="parcela" data-indice="13"><span class="celda-vista"></span></button>
+                    <button class="parcela" data-indice="14"><span class="celda-vista"></span></button>
+                    <button class="parcela" data-indice="15"><span class="celda-vista"></span></button>
                 </div>
             </div>
 
         </div>
 
-        <a href="./index.html"><button class="btn-save">Guardar partida</button></a>
+        <a href="/index.html"><button class="btn-save">Guardar partida</button></a>
+        <button class="btn-cont">Guardar y continuar</button>
 
     <script type="module" src="/controladores/controlJuego.js"></script>
     </body>

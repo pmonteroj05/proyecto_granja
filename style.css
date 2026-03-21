@@ -75,7 +75,6 @@ body#juego {
     flex-direction: column;
     max-height: 100%;
     overflow: hidden;
-    border: 100px solid #add8e6;
 }
 
 #contenedor {
@@ -92,12 +91,16 @@ body#juego {
 
 body#juego h1 {
     text-align: center;
-    display: flex;
+    display: inline-block;
     flex-direction: row;
     justify-self: flex-start;
+    justify-content: center;
     position: relative;
     color: #2e8b57;
-    width: 50%;
+    width: 100%;
+    height: 50px;
+    background-color: blanchedalmond;
+    padding-top: 25px;
 }
 
 .inventario {
@@ -141,46 +144,56 @@ body#juego h1 {
     display: contents;
 }
 
-.region {
+button.parcela{
     display: block;
     width: 100%;
-    padding-top: 100%;
-    position: relative;
-}
-
-.region input[type="radio"] {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
     height: 100%;
-    opacity: 0;
-    z-index: 1;
+    padding: 0;
+    position: relative;
+    border: none;
+    background: transparent;
     cursor: pointer;
 }
 
+
 .celda-vista {
+    display: block;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background-color: white;
-    border: none;
     background-image: url('/recursos/pantalla_juego/sin_semilla.jpg');
     background-size: cover;
-    gap: 2px;
+    background-position: center;
+    border: none;
+    pointer-events: none; 
 }
 
-.btn-save {
+.celda-vista .img-planta {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 60%;
+    object-fit: contain;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.btn-save, .btn-cont{
+    display: flex;
+    flex-direction: row;
     width: 200px;
-    height: 50px;
+    height: 60px;
     border-radius: 25px;
     border: none;
     background-color: #2e8b57;
     color: white;
     font-size: 16px;
-    margin-top: auto;
+    margin-top: 20px;
     margin-bottom: 20px;
 }
 

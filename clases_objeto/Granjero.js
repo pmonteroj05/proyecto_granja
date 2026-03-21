@@ -4,14 +4,38 @@ export default class Granjero{
     #nombre;
     #dinero;
     #energia;
-    #herramienta1;
-    #herramienta2;
+    #azada;
+    #hoz;
 
     constructor(nombre){
         this.#nombre = nombre;
         this.#dinero = 100;
         this.#energia = 100;
-        this.#herramienta1 = new Herramienta('Azada', 20, 20);
-        this.#herramienta2 = new Herramienta('Hoz', 20, 20);
+        this.#azada = new Herramienta('Azada', 20, 20);
+        this.#hoz = new Herramienta('Hoz', 20, 20);
+    }
+
+    get nombre(){
+        return this.#nombre;
+    }
+
+    get dinero(){
+        return this.#dinero;
+    }
+    
+    get energia(){
+        return this.#energia;
+    }
+    
+    get azada(){
+        return this.#azada;
+    }
+    
+    get hoz(){
+        return this.#hoz;
+    }
+
+    ganarDinero(cantidad) {
+        this.#dinero += cantidad;
     }
 }

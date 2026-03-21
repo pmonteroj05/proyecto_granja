@@ -1,33 +1,59 @@
 export default class Planta{
     #nombre;
-    #numSemilla;
-    #tiempoMadur;
-    #fechaCultivo;
-    #tiempoRecog;
+    #tiempoMadur;   
     #cantFrutos;
-    #idParcela;
-
-    constructor(nombre, tiempoMadur, tiempoRecog, cantFrutos){
-        this.#nombre = nombre;
-        this.#numSemilla = 150;
-        this.#tiempoMadur = tiempoMadur;
-        this.#fechaCultivo = fechaCultivo;
-        this.#tiempoRecog = tiempoRecog;
-        this.#cantFrutos = cantFrutos;
+    #fechaSiembra;   
+    #estado;        
+ 
+    constructor(nombre, tiempoMadur, cantFrutos) {
+        this.#nombre       = nombre;
+        this.#tiempoMadur  = tiempoMadur;
+        this.#cantFrutos   = cantFrutos;
+        this.#fechaSiembra = null;
+        this.#estado       = 'inicial';
+    }
+ 
+    get nombre(){
+        return this.#nombre;
     }
 
-    get tiempoRest(){
-        return this.#tiempoMadur - this.#tiempoRecog;
+    get cantFrutos(){
+        return this.#cantFrutos; 
     }
 
     get estado(){
-        if(this.tiempoRest === this.#fechaCultivo)
-            return "Plantada";
-        else if (this.#tiempoMadur != 0)
-            return "En crecimiento";
-        else if (this.#tiempoRecog != 0)
-            return "Madura";
-        else
-            return "Inicial";
+        return this.#estado;
+    }
+    
+    get tiempoMadur(){
+        return this.#tiempoMadur;
+    }
+    
+    get fechaSiembra(){ 
+        return this.#fechaSiembra; 
+    }
+
+    sembrar() {
+        if (this.#estado !== 'inicial') return false;
+        this.#fechaSiembra = Date.now();
+        this.#estado = 'plantada';
+        return true;
+    }
+
+    actualizarEstado() {
+        if (this.#estado === 'inicial' || this.#estado === 'madura') return;
+        const transcurrido = (Date.now() - this.#fechaSiembra) / 1000;
+        if (transcurrido >= this.#tiempoMadur)
+            this.#estado = 'madura';
+        else if (transcurrido >= this.#tiempoMadur / 2)
+            this.#estado = 'creciendo';
+    }
+
+    recoger() {
+        if (this.#estado !== 'madura') return 0;
+        const frutos = this.#cantFrutos;
+        this.#estado       = 'inicial';
+        this.#fechaSiembra = null;
+        return frutos;
     }
 }
