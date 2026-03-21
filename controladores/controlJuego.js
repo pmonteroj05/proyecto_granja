@@ -1,48 +1,157 @@
-import {loadObject} from "../controladores/gestorAlmac";
-import {saveObject} from "../controladores/gestorAlmac";
+import { loadObject, saveObject } from "../controladores/gestorAlmac.js";
 
-import Granja from "../clases_objeto/Granja";
-import Planta from "../clases_objeto/Planta";
+let granja;
+let semillaActiva = null;
+let herramientaActiva = null;
 
-document.addEventListener("DOMContentLoaded", () => {
+const inicial = "url('/recursos/pantalla_juego/sin_semilla.jpg')";
+const plantada = "url('/recursos/pantalla_juego/plantada.jpg')";
+const creciendo = "url('/recursos/pantalla_juego/creciendo.jpg')";
 
-    const granja = new Granja;
+const IMG_PLANTA = {
+    'Calabaza': '/recursos/pantalla_juego/calabaza.png',
+    'Alcachofa': '/recursos/pantalla_juego/alcachofa.png'
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const btnsParcela = document.querySelectorAll('button.parcela');
+    const btnCalab = document.querySelector('.btn-calab');
+    const btnAlcac = document.querySelector('.btn-alcac');
+    const liHerram = document.querySelectorAll('.herramientas li');
+    
+    const spanSemCalabaza = document.getElementById('sem-calabaza');
+    const spanSemAlcachofa = document.getElementById('sem-alcachofa');
+    const spanFrutosCalab = document.getElementById('frutos-calabaza');
+    const spanFrutosAlcac = document.getElementById('frutos-alcachofa');
+    const spanUsosAzada = document.getElementById('usos-azada');
+    const spanUsosHoz = document.getElementById('usos-hoz');
+
+    const celdas = document.querySelectorAll('.celda-vista');
+
+    const btnGuardar = document.querySelector('.btn-save');
+    const btnContinuar = document.querySelector('.btn-cont');
+
     granja = loadObject();
+    renderTodasCeldas();
+    actualizarContadores();
 
-    const botonGuardar = document.querySelector(".btn-save");
-    const sem = document.querySelector(".btn-semilla");
-    const region = document.querySelectorAll(".region");
-    const parcela = parseInt(region.document.querySelector("value"));
-    const celda = document.querySelector(".celda-vista");
-    let plantaSelec;
+    btnCalab.addEventListener('click', () => {
+        herramientaActiva = null;
+        liHerram[1].style.outline = '';
+        if (semillaActiva === 'Calabaza') {
+            semillaActiva = null;
+            btnCalab.style.outline = '';
+        } else {
+            semillaActiva = 'Calabaza';
+            btnCalab.style.outline = '3px solid #2e8b57';
+            btnAlcac.style.outline = '';
+        }
+    });
 
-    const plantas = [];
-    const parcelas = [];
+    btnAlcac.addEventListener('click', () => {
+        herramientaActiva = null;
+        liHerram[1].style.outline = '';
+        if (semillaActiva === 'Alcachofa') {
+            semillaActiva = null;
+            btnAlcac.style.outline = '';
+        } else {
+            semillaActiva = 'Alcachofa';
+            btnAlcac.style.outline = '3px solid #2e8b57';
+            btnCalab.style.outline = '';
+        }
+    });
 
-    for(let i = 0; i < 16; i++){
-        plantas.push(new Planta());
-        parcelas.push(i);
-    };
+    liHerram[1].style.cursor = 'pointer';
+    liHerram[1].addEventListener('click', () => {
+        semillaActiva = null;
+        btnCalab.style.outline = '';
+        btnAlcac.style.outline = '';
+    });
 
-    function cambiar(){
-        plantaSelec = plantas.at(parcelas.at(parcela));
-        if(plantaSelec.estado() === "Plantada")
-            celda.setProperty("background-image", "url('/recursos/pantalla_juego/plantada.jpg')");
-        else if (plantaSelec.estado() === "En crecimiento")
-            celda.setProperty("background-image", "url('/recursos/pantalla_juego/creciendo.jpg')");
-        else if (plantaSelec.estado() === "Madura"){
-            celda.setProperty("background-image", "url('/recursos/pantalla_juego/plantada.jpg')");
+    btnsParcela.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const indice = parseInt(btn.dataset.indice);
+
+            if (semillaActiva) {
+                const res = granja.sembrar(indice, semillaActiva);
+                if (res.ocup) {
+                    renderCelda(indice);
+                    actualizarContadores();
+                    saveObject(granja);
+                }
+            } else{
+                const planta = granja.parcelas[indice];
+                if (planta && planta.estado === 'madura') {
+                    const res = granja.recoger(indice);
+                    if (res.ocup) {
+                        renderCelda(indice);
+                        actualizarContadores();
+                        saveObject(granja);
+                    }
+                }
+            }
+        });
+    });
+
+    setInterval(() => {
+        const cambiadas = granja.actualizarEstados();
+        if (cambiadas.length > 0) {
+            cambiadas.forEach(i => renderCelda(i));
+            actualizarContadores();
+            saveObject(granja);
+        }
+    }, 1000);
+
+    function renderTodasCeldas() {
+        celdas.forEach((_, i) => renderCelda(i));
+    }
+
+    function renderCelda(i) {
+        const celda  = celdas[i];
+        const planta = granja.parcelas[i];
+        celda.querySelectorAll('.img-planta').forEach(el => el.remove());
+
+        if (!planta || planta.estado === 'inicial') {
+            celda.style.backgroundImage = inicial;
+            return;
+        }
+
+        switch (planta.estado) {
+            case 'plantada':
+                celda.style.backgroundImage = plantada;
+                break;
+            case 'creciendo':
+                celda.style.backgroundImage = creciendo;
+                break;
+            case 'madura':
+                celda.style.backgroundImage = plantada;
+                const imgEl = document.createElement('img');
+                imgEl.src = IMG_PLANTA[planta.nombre] || '';
+                imgEl.alt = planta.nombre;
+                imgEl.className = 'img-planta';
+                celda.appendChild(imgEl);
+                break;
         }
     }
 
-    if(sem != null){
-        parcela = addEventListener("click", cambiar)
-    }
-    
-    botonGuardar.addEventListener("click", () => {
-    if (granja.valid) {
-        saveObject(granja);
-    } 
-  })
+    function actualizarContadores() {
+        const inv = granja.inventarioSemillas;
+        const fr  = granja.frutosRecogidos;
 
-})
+        spanSemCalabaza.textContent = inv.find(s => s.nombre === 'Calabaza').cantidad;
+        spanSemAlcachofa.textContent = inv.find(s => s.nombre === 'Alcachofa').cantidad;
+        spanFrutosCalab.textContent = fr['Calabaza']  || 0;
+        spanFrutosAlcac.textContent = fr['Alcachofa'] || 0;
+        spanUsosAzada.textContent = granja.granjero.azada.usos;
+        spanUsosHoz.textContent = granja.granjero.hoz.usos;
+    }
+
+    btnGuardar.addEventListener('click', () => {
+        saveObject(granja);
+    });
+
+    btnContinuar.addEventListener('click', () => {
+        saveObject(granja);
+    });
+});

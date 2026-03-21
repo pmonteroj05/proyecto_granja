@@ -1,4 +1,4 @@
-import Herramienta from "./Herramienta";
+import Herramienta from "./Herramienta.js";
 export default class Granjero{
     
     #nombre;
@@ -11,8 +11,8 @@ export default class Granjero{
         this.#nombre = nombre;
         this.#dinero = 100;
         this.#energia = 100;
-        this.#azada = new Herramienta('Azada', 20, 20);
-        this.#hoz = new Herramienta('Hoz', 20, 20);
+        this.#azada = new Herramienta('Azada', 20, 100);
+        this.#hoz = new Herramienta('Hoz', 20, 100);
     }
 
     get nombre(){

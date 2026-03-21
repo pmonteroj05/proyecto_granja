@@ -1,5 +1,5 @@
-import Granja from "./Granja.js";
-import Planta from "./Planta.js";
+import Granja from "../clases_objeto/Granja.js";
+import Planta from "../clases_objeto/Planta.js";
  
 const carga = "granja";
 

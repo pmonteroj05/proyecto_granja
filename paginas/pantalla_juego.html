@@ -1,7 +1,4 @@
-<!-- En esta pantalla se mostrará:
-        ● Información del granjero (dinero, energía, herramientas, etc.)
-        ● Inventario
-        ● Terreno cultivable (representación visual de parcelas) -->
+
 
 <!DOCTYPE html>
 <html lang="es">
@@ -14,11 +11,48 @@
         <h1>GRANJA</h1>
         
         <div id="contenedor">
+            <a href="./tienda.html"><button class="btn-tienda"><img src="/recursos/pantalla_juego/tienda_icono.png" alt="tienda"></button></a>
             <div class="inventario">
-                <a href="./tienda.html"><button class="btn-tienda"><img src="/recursos/pantalla_juego/tienda_icono.png" alt="tienda"></button></a>
-                <button class="btn-semilla"><img src="/recursos/pantalla_juego/semillero.png" alt="semillero"></button>
-                <button class="btn-herr"><img src="/recursos/pantalla_juego/gestor_herramientas.png" alt="herramientas"></button>
-                <button class="btn-fruta"><img src="/recursos/pantalla_juego/frutas_recogida.png" alt="frutas"></button>
+                <p>Inventario</p>
+                <button class="btn-calab"><img src="/recursos/pantalla_juego/calabaza.png" alt="calabaza"></button>
+                <button class="btn-alcac"><img src="/recursos/pantalla_juego/alcachofa.png" alt="alcachofa"></button>
+                
+                <ul>
+                    <p>Semillas restantes</p>
+                    <ul>
+                        <li>
+                            <img src="/recursos/pantalla_juego/calabaza.png" alt="calabaza">
+                            <span id="sem-calabaza">100</span>
+                        </li>
+                        <li>
+                            <img src="/recursos/pantalla_juego/alcachofa.png" alt="alcachofa">
+                            <span id="sem-alcachofa">100</span>
+                        </li>
+                    </ul>
+
+                    <p>Cantidad de frutos</p>
+                    <ul class="frutos">
+                        <li>
+                            <img src="/recursos/pantalla_juego/calabaza.png" alt="calabaza">
+                            <span id="frutos-calabaza">0</span>
+                        </li>
+                        <li>
+                            <img src="/recursos/pantalla_juego/alcachofa.png" alt="alcachofa">
+                            <span id="frutos-alcachofa">0</span>
+                        </li>
+                    </ul>
+                    <p>Usos de herramientas</p>
+                    <ul class="herramientas">
+                        <li>
+                            <img src="/recursos/pantalla_juego/azada.png" alt="azada">
+                            <span id="usos-azada">20</span>
+                        </li>
+                        <li>
+                            <img src="/recursos/pantalla_juego/hoz.png" alt="hoz">
+                            <span id="usos-hoz">20</span>
+                        </li>
+                    </ul>
+                </ul>
             </div>
 
             <div id="huerto">
@@ -48,10 +82,11 @@
                 </div>
             </div>
 
+            <div id="guardados">
+                <a href="/index.html"><button class="btn-save">Guardar partida</button></a>
+                <button class="btn-cont">Guardar y continuar</button>
+            </div>
         </div>
-
-        <a href="/index.html"><button class="btn-save">Guardar partida</button></a>
-        <button class="btn-cont">Guardar y continuar</button>
 
     <script type="module" src="/controladores/controlJuego.js"></script>
     </body>

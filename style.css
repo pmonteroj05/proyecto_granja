@@ -98,20 +98,58 @@ body#juego h1 {
     position: relative;
     color: #2e8b57;
     width: 100%;
-    height: 50px;
+    height: 60px;
     background-color: blanchedalmond;
     padding-top: 25px;
 }
 
-.inventario {
-    position: absolute;
-    right: 20px;
-    top: 20px;
+.btn-tienda {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 1px solid black;
+    background-color: white;
     display: flex;
-    flex-direction: column;
-    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+ 
+.btn-tienda img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
 }
 
+#contenedor > a {
+    position: fixed;
+    right: 157px;
+    top: 150px;
+}
+
+.inventario {
+    position: fixed;
+    right: 50px;
+    top: 400px;           
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 12px 10px;
+    width: 300px;
+    box-sizing: border-box;
+}
+
+.inventario p {
+    font-size: 20px;
+    font-weight: bold;
+    color: #2e8b57;
+    text-align: center;
+    margin: 4px 0 2px;
+}
+ 
 .inventario button {
     width: 60px;
     height: 60px;
@@ -121,13 +159,44 @@ body#juego h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer; 
+    cursor: pointer;
+    align-self: center;
 }
-
+ 
 .inventario button img {
     width: 70%;
     height: 70%;
     object-fit: contain;
+}
+ 
+.inventario ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+ 
+.inventario ul li {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 15px;
+    justify-content: center;
+}
+ 
+.inventario ul li img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+ 
+.inventario ul li span {
+    font-weight: bold;
+    color: #333;
+    min-width: 20px;
+    text-align: center;
 }
 
 #huerto {
@@ -173,50 +242,51 @@ button.parcela{
 
 .celda-vista .img-planta {
     position: absolute;
-    bottom: 0;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
-    width: 60%;
-    height: 60%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
     object-fit: contain;
+    background: transparent;
     z-index: 1;
     pointer-events: none;
 }
 
-.btn-save, .btn-cont{
+#guardados {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
     flex-direction: row;
-    width: 200px;
+    justify-content: center;
+    gap: 20px;
+    z-index: 10;
+    width: 100%;
     height: 60px;
+    background-color: blanchedalmond;
+    padding-bottom: 25px;
+    padding-top: 25px;
+}
+ 
+body#juego .btn-save,
+body#juego .btn-cont {
+    width: 200px;
+    height: 50px;
     border-radius: 25px;
     border: none;
     background-color: #2e8b57;
     color: white;
+    text-decoration: none;
     font-size: 16px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-
-.btn-semilla, .btn-herr, .btn-fruta {
-    position: relative;
-}
-
-.btn-semilla::after, .btn-herr::after, .btn-fruta::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 100%;
-    width: 0;
-    height: 60px;
-    background-color: white;
-    border: 1px solid black;
-    border-radius: 5px;
-    z-index: 1;
-    opacity: 0;
-    transition: opacity 0.3s, width 0.3s;
-}
-
-.btn-semilla:hover::after, .btn-herr:hover::after, .btn-fruta:hover::after {
-    opacity: 1;
-    width: 200px;
+ 
+body#juego .btn-save:hover,
+body#juego .btn-cont:hover {
+    background-color: #1b5e20;
 }

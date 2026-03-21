@@ -21,10 +21,6 @@ export default class Herramienta{
         return this.#usos;
     }
 
-    get duracion(){
-        return this.#usos--;
-    }
-
     usar() {
         if (this.#usos <= 0) return false;
         this.#usos--;

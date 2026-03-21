@@ -1,5 +1,5 @@
-import Granjero from "./Granjero";
-import Planta from "./Planta";
+import Granjero from "./Granjero.js";
+import Planta from "./Planta.js"
 
 export default class Granja{
     #granjero;
@@ -17,8 +17,8 @@ export default class Granja{
         ];
  
         this.#inventarioSemillas = [
-            {nombre: 'Calabaza', cantidad: 10},
-            {nombre: 'Alcachofa', cantidad: 10}
+            {nombre: 'Calabaza', cantidad: 100},
+            {nombre: 'Alcachofa', cantidad: 100}
         ];
  
         this.#parcelas = Array(16).fill(null);
