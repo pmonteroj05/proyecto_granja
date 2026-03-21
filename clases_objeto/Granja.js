@@ -48,18 +48,18 @@ export default class Granja{
     sembrar(indiceParcela, nombreSemilla) {
         if (this.#parcelas[indiceParcela] !== null)
             return{
-                ocup: false, mensaje: 'Esa parcela ya está ocupada.'
+                ocup: false
             };
  
         const semInv = this.#inventarioSemillas.find(s => s.nombre === nombreSemilla);
         if (!semInv || semInv.cantidad <= 0)
             return{
-                ocup: false, mensaje: `No quedan semillas de ${nombreSemilla}.`
+                ocup: false
             };
  
         if (!this.#granjero.azada.usar())
             return{
-                ocup: false, mensaje: 'La azada no tiene usos disponibles.'
+                ocup: false
             };
  
         const plantilla = this.#catalogo.find(p => p.nombre === nombreSemilla);
@@ -70,7 +70,7 @@ export default class Granja{
         semInv.cantidad--;
  
         return{
-            ocup: true, mensaje: `${nombreSemilla} sembrada en parcela ${indiceParcela}.`
+            ocup: true
         };
     }
  
@@ -78,15 +78,15 @@ export default class Granja{
         const planta = this.#parcelas[indiceParcela];
         if (!planta)
             return{
-                ocup: false, mensaje: 'Esa parcela está vacía.'
+                ocup: false
             };
         if (planta.estado !== 'madura')
             return{
-                ocup: false, mensaje: 'La planta aún no está madura.'
+                ocup: false
             };
         if (!this.#granjero.hoz.usar())
             return{
-                ocup: false, mensaje: 'La hoz no tiene usos disponibles.'
+                ocup: false
             };
  
         const frutos = planta.recoger();
@@ -97,7 +97,7 @@ export default class Granja{
         this.#granjero.ganarDinero(frutos * 2);
  
         return{
-            ocup: true, mensaje: `${frutos} ${nombre} recogidas.`
+            ocup: true
         };
     }
  

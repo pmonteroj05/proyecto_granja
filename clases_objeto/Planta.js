@@ -6,11 +6,11 @@ export default class Planta{
     #estado;        
  
     constructor(nombre, tiempoMadur, cantFrutos) {
-        this.#nombre       = nombre;
-        this.#tiempoMadur  = tiempoMadur;
-        this.#cantFrutos   = cantFrutos;
+        this.#nombre = nombre;
+        this.#tiempoMadur = tiempoMadur;
+        this.#cantFrutos = cantFrutos;
         this.#fechaSiembra = null;
-        this.#estado       = 'inicial';
+        this.#estado = 'inicial';
     }
  
     get nombre(){

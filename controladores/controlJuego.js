@@ -1,4 +1,5 @@
 import { loadObject, saveObject } from "../controladores/gestorAlmac.js";
+import Swal from "https://cdn.jsdelivr.net/npm/sweetalert2@11/+esm";
 
 let granja;
 let semillaActiva = null;
@@ -12,6 +13,19 @@ const IMG_PLANTA = {
     'Calabaza': '/recursos/pantalla_juego/calabaza.png',
     'Alcachofa': '/recursos/pantalla_juego/alcachofa.png'
 };
+
+
+function mostrarToast(icono, mensaje) {
+  Swal.fire({
+    toast: true,
+    position: 'top-end',
+    icon: icono,
+    title: mensaje,
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true
+  });
+}
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -153,5 +167,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     btnContinuar.addEventListener('click', () => {
         saveObject(granja);
+        mostrarToast("success", "Partida guardada correctamente, puedes continuar");
     });
 });
