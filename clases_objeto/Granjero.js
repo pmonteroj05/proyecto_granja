@@ -38,4 +38,8 @@ export default class Granjero{
     ganarDinero(cantidad) {
         this.#dinero += cantidad;
     }
+
+    perderenergia(usos) {
+        this.#energia -= usos;
+    }
 }

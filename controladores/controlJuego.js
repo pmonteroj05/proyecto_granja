@@ -3,7 +3,6 @@ import Swal from "https://cdn.jsdelivr.net/npm/sweetalert2@11/+esm";
 
 let granja;
 let semillaActiva = null;
-let herramientaActiva = null;
 
 const inicial = "url('/recursos/pantalla_juego/sin_semilla.jpg')";
 const plantada = "url('/recursos/pantalla_juego/plantada.jpg')";
@@ -32,7 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnsParcela = document.querySelectorAll('button.parcela');
     const btnCalab = document.querySelector('.btn-calab');
     const btnAlcac = document.querySelector('.btn-alcac');
-    const liHerram = document.querySelectorAll('.herramientas li');
     
     const spanSemCalabaza = document.getElementById('sem-calabaza');
     const spanSemAlcachofa = document.getElementById('sem-alcachofa');
@@ -40,9 +38,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const spanFrutosAlcac = document.getElementById('frutos-alcachofa');
     const spanUsosAzada = document.getElementById('usos-azada');
     const spanUsosHoz = document.getElementById('usos-hoz');
+    const spanDinero = document.getElementById('dinero');
+    const spanEnerg = document.getElementById('energia');
 
     const celdas = document.querySelectorAll('.celda-vista');
 
+    const btnTienda = document.querySelector('.btn-tienda');
     const btnGuardar = document.querySelector('.btn-save');
     const btnContinuar = document.querySelector('.btn-cont');
 
@@ -51,8 +52,6 @@ document.addEventListener('DOMContentLoaded', () => {
     actualizarContadores();
 
     btnCalab.addEventListener('click', () => {
-        herramientaActiva = null;
-        liHerram[1].style.outline = '';
         if (semillaActiva === 'Calabaza') {
             semillaActiva = null;
             btnCalab.style.outline = '';
@@ -64,8 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     btnAlcac.addEventListener('click', () => {
-        herramientaActiva = null;
-        liHerram[1].style.outline = '';
         if (semillaActiva === 'Alcachofa') {
             semillaActiva = null;
             btnAlcac.style.outline = '';
@@ -74,13 +71,6 @@ document.addEventListener('DOMContentLoaded', () => {
             btnAlcac.style.outline = '3px solid #2e8b57';
             btnCalab.style.outline = '';
         }
-    });
-
-    liHerram[1].style.cursor = 'pointer';
-    liHerram[1].addEventListener('click', () => {
-        semillaActiva = null;
-        btnCalab.style.outline = '';
-        btnAlcac.style.outline = '';
     });
 
     btnsParcela.forEach(btn => {
@@ -159,7 +149,24 @@ document.addEventListener('DOMContentLoaded', () => {
         spanFrutosAlcac.textContent = fr['Alcachofa'] || 0;
         spanUsosAzada.textContent = granja.granjero.azada.usos;
         spanUsosHoz.textContent = granja.granjero.hoz.usos;
+        spanDinero.textContent = granja.granjero.dinero;
+        spanEnerg.textContent = granja.granjero.energia;
     }
+
+    btnTienda.addEventListener('click', () => {
+        if (semillaActiva === 'Calabaza') {
+            btnCalab.style.outline = '3px solid #2e8b57';
+            btnAlcac.style.outline = '';
+            granja.sumsem(semillaActiva);
+            actualizarContadores();
+        } else if (semillaActiva === 'Alcachofa'){
+            btnAlcac.style.outline = '3px solid #2e8b57';
+            btnCalab.style.outline = '';
+            granja.sumsem(semillaActiva);
+            actualizarContadores();
+        }else
+            mostrarToast("error", "Debes escoger una planta");
+    });
 
     btnGuardar.addEventListener('click', () => {
         saveObject(granja);

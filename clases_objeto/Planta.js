@@ -52,7 +52,7 @@ export default class Planta{
     recoger() {
         if (this.#estado !== 'madura') return 0;
         const frutos = this.#cantFrutos;
-        this.#estado       = 'inicial';
+        this.#estado = 'inicial';
         this.#fechaSiembra = null;
         return frutos;
     }

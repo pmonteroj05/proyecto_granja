@@ -69,9 +69,15 @@ export default class Granja{
         this.#parcelas[indiceParcela] = nueva;
         semInv.cantidad--;
  
+        this.#granjero.perderenergia(1);
         return{
             ocup: true
         };
+    }
+
+    sumsem(nombreSemilla){
+        const semInv = this.#inventarioSemillas.find(s => s.nombre === nombreSemilla);
+        semInv.cantidad++;
     }
  
     recoger(indiceParcela) {
@@ -84,18 +90,18 @@ export default class Granja{
             return{
                 ocup: false
             };
-        if (!this.#granjero.hoz.usar())
+        if (!this.#granjero.hoz.usar()){
             return{
                 ocup: false
             };
- 
+        }
         const frutos = planta.recoger();
         const nombre = planta.nombre;
         this.#parcelas[indiceParcela] = null;
  
         this.#frutosRecogidos[nombre] = (this.#frutosRecogidos[nombre] || 0) + frutos;
         this.#granjero.ganarDinero(frutos * 2);
- 
+        this.#granjero.perderenergia(1);
         return{
             ocup: true
         };

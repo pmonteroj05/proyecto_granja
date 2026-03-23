@@ -113,6 +113,9 @@ body#juego h1 {
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    position: fixed;
+    left: 5%;
+    top: 10%;
 }
  
 .btn-tienda img {
@@ -121,10 +124,26 @@ body#juego h1 {
     object-fit: contain;
 }
 
-#contenedor > a {
+#infoGranj {
     position: fixed;
     left: 5%;
-    top: 10%;
+    top: 25%;          
+    display: flex;
+    flex-direction: column;
+    background-color:antiquewhite;
+    border: 1px solid grey;
+    border-radius: 10px;
+    padding: 12px 10px;
+    width: 300px;
+    box-sizing: border-box;
+}
+
+#infoGranj p {
+    font-size: 20px;
+    font-weight: bold;
+    color: #2e8b57;
+    text-align:justify;
+    margin: 4px 0 2px;
 }
 
 .inventario {
@@ -134,8 +153,8 @@ body#juego h1 {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    background-color: #f9f9f9;
-    border: 1px solid #ccc;
+    background-color: antiquewhite;
+    border: 1px solid grey;
     border-radius: 10px;
     padding: 12px 10px;
     width: 350px;
