@@ -13,12 +13,14 @@ export default class Granja{
  
         this.#catalogo = [
             new Planta('Calabaza', 30, 5),
-            new Planta('Alcachofa', 50, 8)
+            new Planta('Alcachofa', 50, 8),
+            new Planta('Berenjena', 20, 2)
         ];
  
         this.#inventarioSemillas = [
             {nombre: 'Calabaza', cantidad: 100},
-            {nombre: 'Alcachofa', cantidad: 100}
+            {nombre: 'Alcachofa', cantidad: 100},
+            {nombre: 'Berenjena', cantidad: 100}
         ];
  
         this.#parcelas = Array(16).fill(null);

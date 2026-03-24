@@ -31,13 +31,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnsParcela = document.querySelectorAll('button.parcela');
     const btnCalab = document.querySelector('.btn-calab');
     const btnAlcac = document.querySelector('.btn-alcac');
+    const btnBeren = document.querySelector('.btn-beren');
     
     const spanSemCalabaza = document.getElementById('sem-calabaza');
     const spanSemAlcachofa = document.getElementById('sem-alcachofa');
+    const spanSemBeren = document.getElementById('sem-beren');
+
     const spanFrutosCalab = document.getElementById('frutos-calabaza');
     const spanFrutosAlcac = document.getElementById('frutos-alcachofa');
+    const spanFrutosBeren = document.getElementById('frutos-berenj');
+
     const spanUsosAzada = document.getElementById('usos-azada');
     const spanUsosHoz = document.getElementById('usos-hoz');
+
     const spanDinero = document.getElementById('dinero');
     const spanEnerg = document.getElementById('energia');
 
@@ -45,12 +51,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const btnTienda = document.querySelector('.btn-tienda');
     const btnGuardar = document.querySelector('.btn-save');
-    const btnContinuar = document.querySelector('.btn-cont');
+    const btnContinuar = document.querySelector('.btn-cont'); 
+
+    if(loadObject() !== true){
+        alert("TUTORIAL:                                                                       " +
+            "1. Escoger una semilla para plantar                                               " +
+            "2. Escoger una parcela donde plantar                                              " +
+            "3. Esperar el tiempo necesario para recoger los frutos                            " +
+            "4. Recoger los frutos pulsando encima de ellos                                    " +
+            "5. Recargar semillas con el botón de la tienda                                    "
+        );
+    }
 
     granja = loadObject();
     renderTodasCeldas();
     actualizarContadores();
-
+    
+    
     btnCalab.addEventListener('click', () => {
         if (semillaActiva === 'Calabaza') {
             semillaActiva = null;
@@ -59,6 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
             semillaActiva = 'Calabaza';
             btnCalab.style.outline = '3px solid #2e8b57';
             btnAlcac.style.outline = '';
+            btnBeren.style.outline = '';
         }
     });
 
@@ -70,6 +88,19 @@ document.addEventListener('DOMContentLoaded', () => {
             semillaActiva = 'Alcachofa';
             btnAlcac.style.outline = '3px solid #2e8b57';
             btnCalab.style.outline = '';
+            btnBeren.style.outline = '';
+        }
+    });
+
+    btnBeren.addEventListener('click', () => {
+        if (semillaActiva === 'Berenjena') {
+            semillaActiva = null;
+            btnBeren.style.outline = '';
+        } else {
+            semillaActiva = 'Berenjena';
+            btnBeren.style.outline = '3px solid #2e8b57';
+            btnCalab.style.outline = '';
+            btnAlcac.style.outline = '';
         }
     });
 
@@ -145,8 +176,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         spanSemCalabaza.textContent = inv.find(s => s.nombre === 'Calabaza').cantidad;
         spanSemAlcachofa.textContent = inv.find(s => s.nombre === 'Alcachofa').cantidad;
+        spanSemBeren.textContent = inv.find(s => s.nombre === 'Berenjena').cantidad;
         spanFrutosCalab.textContent = fr['Calabaza']  || 0;
         spanFrutosAlcac.textContent = fr['Alcachofa'] || 0;
+        spanFrutosBeren.textContent = fr['Berenjena'] || 0;
         spanUsosAzada.textContent = granja.granjero.azada.usos;
         spanUsosHoz.textContent = granja.granjero.hoz.usos;
         spanDinero.textContent = granja.granjero.dinero;
@@ -157,11 +190,19 @@ document.addEventListener('DOMContentLoaded', () => {
         if (semillaActiva === 'Calabaza') {
             btnCalab.style.outline = '3px solid #2e8b57';
             btnAlcac.style.outline = '';
+            btnBeren.style.outline = '';
             granja.sumsem(semillaActiva);
             actualizarContadores();
         } else if (semillaActiva === 'Alcachofa'){
             btnAlcac.style.outline = '3px solid #2e8b57';
             btnCalab.style.outline = '';
+            btnBeren.style.outline = '';
+            granja.sumsem(semillaActiva);
+            actualizarContadores();
+        }else if (semillaActiva === 'Berenjena'){
+            btnBeren.style.outline = '3px solid #2e8b57';
+            btnCalab.style.outline = '';
+            btnAlcac.style.outline = '';
             granja.sumsem(semillaActiva);
             actualizarContadores();
         }else

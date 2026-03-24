@@ -34,10 +34,13 @@ export default class Planta{
     }
 
     sembrar() {
-        if (this.#estado !== 'inicial') return false;
-        this.#fechaSiembra = Date.now();
-        this.#estado = 'plantada';
-        return true;
+        if(Math.random() > 0.1){
+            if (this.#estado !== 'inicial') return false;
+            this.#fechaSiembra = Date.now();
+            this.#estado = 'plantada';
+            return true;
+        }else
+            return false;
     }
 
     actualizarEstado() {

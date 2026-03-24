@@ -79,5 +79,5 @@ export function saveObject(granja) {
 export function loadObject() {
     const libre = localStorage.getItem(carga);
     if (!libre) return new Granja();
-    return descompGranja(JSON.parse(libre));
+    return descompGranja(JSON.parse(libre)), true;
 }
