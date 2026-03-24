@@ -40,12 +40,12 @@ function compGranja(granja){
 function descompGranja(obj){
     const g = new Granja();
 
-    const usosConsumidosAzada = 20 - obj.granjero.azada.usos;
+    const usosConsumidosAzada = 100 - obj.granjero.azada.usos;
 
     for (let i = 0; i < usosConsumidosAzada; i++) 
         g.granjero.azada.usar();
 
-    const usosConsumidosHoz = 20 - obj.granjero.hoz.usos;
+    const usosConsumidosHoz = 100 - obj.granjero.hoz.usos;
     
     for (let i = 0; i < usosConsumidosHoz; i++) 
         g.granjero.hoz.usar();
