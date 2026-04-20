@@ -6,22 +6,18 @@ export default class Granja{
     #catalogo;            
     #inventarioSemillas;  
     #parcelas;            
-    #frutosRecogidos;     
+    #frutosRecogidos;
+    #tipoCultivo;       
  
-    constructor() {
-        this.#granjero = new Granjero('Jacinto');
+    constructor(granjero, catalogo = [], tipoCultivo = 'm') {
+        this.#granjero = granjero;
  
-        this.#catalogo = [
-            new Planta('Calabaza', 30, 5),
-            new Planta('Alcachofa', 50, 8),
-            new Planta('Berenjena', 20, 2)
-        ];
+        this.#catalogo = catalogo;
  
-        this.#inventarioSemillas = [
-            {nombre: 'Calabaza', cantidad: 100},
-            {nombre: 'Alcachofa', cantidad: 100},
-            {nombre: 'Berenjena', cantidad: 100}
-        ];
+        this.#inventarioSemillas = catalogo.map(p => ({
+            nombre: p.nombre,
+            cantidad: 10
+        }));
  
         this.#parcelas = Array(16).fill(null);
         this.#frutosRecogidos = {};
@@ -30,9 +26,17 @@ export default class Granja{
     get granjero(){
         return this.#granjero;
     }
+
+    set granjero(g){
+        this.#granjero = g;
+    }
     
     get catalogo(){
         return this.#catalogo;
+    }
+
+    set catalogo(c){
+        this.#catalogo = c;
     }
     
     get inventarioSemillas(){
@@ -45,6 +49,10 @@ export default class Granja{
     
     get frutosRecogidos(){
         return this.#frutosRecogidos;
+    }
+
+    get tipoCultivo(){
+        return this.#tipoCultivo;
     }
  
     sembrar(indiceParcela, nombreSemilla) {
@@ -77,9 +85,18 @@ export default class Granja{
         };
     }
 
-    sumsem(nombreSemilla){
+    sumsem(nombreSemilla, cantidad = 1){
         const semInv = this.#inventarioSemillas.find(s => s.nombre === nombreSemilla);
-        semInv.cantidad++;
+        if (semInv)
+            semInv.cantidad += cantidad;
+        else
+            this.#inventarioSemillas.push({nombre: nombreSemilla, cantidad});
+    }
+
+    añadirAlCatalogo(planta) {
+        const existe = this.#catalogo.find(p => p.nombre === planta.nombre);
+        if (!existe) 
+            this.#catalogo.push(planta);
     }
  
     recoger(indiceParcela) {
@@ -112,10 +129,12 @@ export default class Granja{
     actualizarEstados() {
         const cambiados = [];
         this.#parcelas.forEach((planta, i) => {
-            if (!planta) return;
+            if (!planta) 
+                return;
             const antes = planta.estado;
             planta.actualizarEstado();
-            if (planta.estado !== antes) cambiados.push(i);
+            if (planta.estado !== antes)
+                cambiados.push(i);
         });
         return cambiados;
     }

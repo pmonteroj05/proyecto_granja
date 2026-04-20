@@ -33,18 +33,25 @@ export default class Planta{
         return this.#fechaSiembra; 
     }
 
+    restaurarFecha(timestamp) {
+        this.#fechaSiembra = timestamp;
+    }
+
+    forzarEstado(estado) {
+        this.#estado = estado;
+    }
+
     sembrar() {
-        if(Math.random() > 0.1){
-            if (this.#estado !== 'inicial') return false;
-            this.#fechaSiembra = Date.now();
-            this.#estado = 'plantada';
-            return true;
-        }else
+        if (this.#estado !== 'inicial') 
             return false;
+        this.#fechaSiembra = Date.now();
+        this.#estado = 'plantada';
+        return true;
     }
 
     actualizarEstado() {
-        if (this.#estado === 'inicial' || this.#estado === 'madura') return;
+        if (this.#estado === 'inicial' || this.#estado === 'madura') 
+            return;
         const transcurrido = (Date.now() - this.#fechaSiembra) / 1000;
         if (transcurrido >= this.#tiempoMadur)
             this.#estado = 'madura';
@@ -53,7 +60,8 @@ export default class Planta{
     }
 
     recoger() {
-        if (this.#estado !== 'madura') return 0;
+        if (this.#estado !== 'madura') 
+            return 0;
         const frutos = this.#cantFrutos;
         this.#estado = 'inicial';
         this.#fechaSiembra = null;

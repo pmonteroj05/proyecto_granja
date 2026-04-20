@@ -5,9 +5,69 @@
         <title>Configuración</title>
         <link rel="stylesheet" href="/style.css">
     </head>
-    <body>
-        
-        
-    <script type="module" src=""></script>
+    <body id="configuracion">
+        <div id="formulario-config">
+            <h1>CONFIGURACIÓN DE LA PARTIDA</h1>
+            <div id="formulario">
+
+                <div class="campo">
+                    <label for="nombre">Nombre del granjero</label>
+                    <input type="text" id="nombre" placeholder="Escribe tu nombre" maxlength="30" />
+                </div>
+
+                <br><br>
+
+                <div class="campo">
+                    <p>Tipo de cultivo</p>
+                        <div class="opciones-tipo">
+                            <label><input type="radio" name="tipo" value="v"/>Vegetales</label>
+                            <label><input type="radio" name="tipo" value="f"/>Frutales</label>
+                            <label><input type="radio" name="tipo" value="m"/>Mixto</label>
+                        </div>
+                </div>
+
+                <br><br>
+
+                <div class="campo">
+                    <label for="semilla-inicial">Elige una semilla inicial</label>
+                    <select id="semilla-inicial" disabled>
+                        <option value="">Elige primero un tipo de cultivo</option>
+                    </select>
+                </div>
+                    
+                <br><br>
+                
+                <div id="valores">
+                    <div class="puntos-header">
+                        <span>Valores a repartir</span>
+                        <span id="reparto">100</span>
+                    </div>
+
+                    <div class="stat-row" id="din">
+                        <label>Dinero</label>
+                        <button type="button" class="btn-menos">-</button>
+                        <div class="barra-wrap"><div class="barra" style="width:50%"></div></div>
+                        <button type="button" class="btn-mas">+</button>
+                        <span class="valorInic">50</span>
+                    </div>
+
+                    <div class="stat-row" id="ener">
+                        <label>Energía</label>
+                        <button type="button" class="btn-menos">-</button>
+                        <div class="barra-wrap"><div class="barra" style="width:50%"></div></div>
+                        <button type="button" class="btn-mas">+</button>
+                        <span class="valorInic">50</span>
+                    </div>
+                </div>
+            </div>
+
+            <br><br>
+
+            <div>
+                <button class="btn-start">COMENZAR PARTIDA</button>
+            </div>
+        </div>
+
+        <script type="module" src="/controladores/controlConfig.js"></script>
     </body>
 </html>

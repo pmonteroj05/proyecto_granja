@@ -2,11 +2,15 @@ export default class Herramienta{
     #tipo;
     #precio;
     #usos;
+    #nivel;
+    #usosMaxPorNivel;
 
-    constructor(tipo, precio, usos){
+    constructor(tipo, precio, usos, nivel = 1){
         this.#tipo = tipo;
         this.#precio = precio;
-        this.#usos = usos;
+        this.#usos = usos * nivel;
+        this.#nivel = nivel;
+        this.#usosMaxPorNivel = usos;
     }
 
     get tipo(){
@@ -21,10 +25,37 @@ export default class Herramienta{
         return this.#usos;
     }
 
+    get nivel(){
+        return this.#nivel;
+    }
+    
+    get usosMax(){
+        return this.#usosMaxPorNivel * this.#nivel;
+    }
+
     usar() {
-        if (this.#usos <= 0) return false;
+        if (this.#usos <= 0) 
+            return false;
         this.#usos--;
         return true;
     }
-}
 
+    recargarUsos(cantidad) {
+        this.#usos = Math.min(this.#usos + cantidad, this.usosMax);
+    }
+ 
+    subirNivel() {
+        this.#nivel++;
+        this.#usos += this.#usosMaxPorNivel;
+    }
+
+    descomp() {
+        return {
+            tipo: this.#tipo,
+            precio: this.#precio,
+            usos: this.#usos,
+            nivel: this.#nivel,
+            usosMaxPorNivel: this.#usosMaxPorNivel
+        };
+    }
+}

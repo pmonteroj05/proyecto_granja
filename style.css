@@ -307,3 +307,190 @@ body#juego .btn-save:hover,
 body#juego .btn-cont:hover {
     background-color: #1b5e20;
 }
+
+
+/*pantalla de configuración*/
+body#configuracion {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-image: url(/recursos/menu_principal/granja_fondo.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#formulario-config {
+    background-color: white;
+    border: 3px solid #2e8b57;
+    border-radius: 10px;
+    padding: 40px 50px;
+    width: 550px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+#formulario-config h1 {
+    text-align: center;
+    color: #2e8b57;
+    font-size: 24px;
+    margin: 0 0 8px 0;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.campo label,
+.campo p {
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+}
+
+.campo input[type="text"],
+.campo select {
+    padding: 10px 12px;
+    border: 2px solid #2e8b57;
+    border-radius: 6px;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.campo input[type="text"]:focus,
+.campo select:focus {
+    border-color: #1b5e20;
+}
+
+.campo select:disabled {
+    background-color: #f0f0f0;
+    border-color: #aaa;
+    color: #888;
+    cursor: not-allowed;
+}
+
+.campo .opciones-tipo {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+}
+
+.campo label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+.campo input[type="radio"] {
+    accent-color: #2e8b57;
+    width: 16px;
+    height: 16px;
+}
+
+#valores {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+#valores > .puntos-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    color: #333;
+}
+
+#valores > .puntos-header span {
+    color: #2e8b57;
+    font-size: 16px;
+}
+
+.stat-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.stat-row label {
+    width: 65px;
+    font-weight: bold;
+    color: #333;
+    flex-shrink: 0;
+}
+
+.stat-row .btn-menos,
+.stat-row .btn-mas {
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50%;
+    background-color: #2e8b57;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+
+.stat-row .btn-menos:hover,
+.stat-row .btn-mas:hover {
+    background-color: #1b5e20;
+}
+
+.barra-wrap {
+    flex: 1;
+    height: 12px;
+    background-color: #d4edda;
+    border-radius: 6px;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+}
+
+.barra {
+    height: 100%;
+    background-color: #2e8b57;
+    border-radius: 6px;
+    transition: width 0.15s ease;
+    pointer-events: none;
+}
+
+.stat-row .valorInic {
+    width: 30px;
+    text-align: right;
+    font-weight: bold;
+    color: #2e8b57;
+    flex-shrink: 0;
+}
+
+.btn-start {
+    align-self: center;
+    width: 220px;
+    padding: 14px;
+    font-size: 17px;
+    font-weight: bold;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-top: 8px;
+}
+
+.btn-start:hover {
+    background-color: #1b5e20;
+    transform: scale(1.05);
+}

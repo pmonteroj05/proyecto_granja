@@ -9,68 +9,50 @@
         <h1>GRANJA</h1>
         
         <div id="contenedor">
-            <button class="btn-tienda"><img src="/recursos/pantalla_juego/tienda_icono.png" alt="tienda"></button>
+            <a href="/paginas/tienda.html"><button class="btn-tienda"><img src="/recursos/pantalla_juego/tienda_icono.png" alt="tienda"></button></a>
 
             <div id="infoGranj">
                 <p>Información del granjero: </p>
                 <ul>
-                    <li>Nombre: Jacinto</li>
+                    <li>Nombre: 
+                        <span id="nombre-granjero"></span>
+                    </li>
                     <li>Dinero: 
-                        <span id="dinero">100</span>
+                        <span id="dinero">0</span>
                     </li>
                     <li>Energía:
-                        <span id="energia">100</span>
+                        <span id="energia">0</span>
                     </li>
                 </ul>
             </div>
 
             <div class="inventario">
                 <p>Inventario</p>
-                <button class="btn-calab"><img src="/recursos/pantalla_juego/calabaza.png" alt="calabaza"></button>
-                <button class="btn-alcac"><img src="/recursos/pantalla_juego/alcachofa.png" alt="alcachofa"></button>
-                <button class="btn-beren"><img src="/recursos/pantalla_juego/berenjena.png" alt="berenjena"></button>
-                
+                <div class="botones-semillas"></div>
                 <ul>
                     <p>Semillas restantes</p>
-                    <ul>
-                        <li>
-                            <img src="/recursos/pantalla_juego/calabaza.png" alt="calabaza">
-                            <span id="sem-calabaza">100</span>
-                        </li>
-                        <li>
-                            <img src="/recursos/pantalla_juego/alcachofa.png" alt="alcachofa">
-                            <span id="sem-alcachofa">100</span>
-                        </li>
-                        <li>
-                            <img src="/recursos/pantalla_juego/berenjena.png" alt="berenjena">
-                            <span id="sem-beren">100</span>
-                        </li>
+                    <ul class="inventario-semillas">
+                        
                     </ul>
 
                     <p>Cantidad de frutos</p>
                     <ul class="frutos">
-                        <li>
-                            <img src="/recursos/pantalla_juego/calabaza.png" alt="calabaza">
-                            <span id="frutos-calabaza">0</span>
-                        </li>
-                        <li>
-                            <img src="/recursos/pantalla_juego/alcachofa.png" alt="alcachofa">
-                            <span id="frutos-alcachofa">0</span>
-                        </li>
-                        <li>
-                            <img src="/recursos/pantalla_juego/berenjena.png" alt="berenjena">
-                            <span id="frutos-berenj">0</span>
-                        </li>
+                        
                     </ul>
+
                     <p>Usos de herramientas</p>
                     <ul class="herramientas">
                         <li>
                             <img src="/recursos/pantalla_juego/azada.png" alt="azada">
-                            <span id="usos-azada">100</span>
+                            <span id="usos-azada"></span>
                         </li>
                         <li>
                             <img src="/recursos/pantalla_juego/hoz.png" alt="hoz">
-                            <span id="usos-hoz">100</span>
+                            <span id="usos-hoz"></span>
+                        </li>
+                        <li>
+                            <img src="/recursos/pantalla_juego/regadera.png" alt="regadera">
+                            <span id="usos-regadera"></span>
                         </li>
                     </ul>
                 </ul>
@@ -105,7 +87,7 @@
             </div>
 
             <div id="guardados">
-                <a href="/index.html"><button class="btn-save">Guardar partida</button></a>
+                <button class="btn-save">Guardar partida</button>
                 <button class="btn-cont">Guardar y continuar</button>
             </div>
         </div>
