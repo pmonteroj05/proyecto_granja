@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tienda xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="tienda.xsd">
+    
+    <!-- semillas-->
+    <semilla sem = "cal">
+        <nombre>Calabaza</nombre>
+        <tipo>Vegetal</tipo>
+        <precio>50</precio>
+        <tiempoCrec>60</tiempoCrec>
+        <beneficio>3</beneficio>
+    </semilla>
+
+    <semilla sem = "alc">
+        <nombre>Alcachofa</nombre>
+        <tipo>Vegetal</tipo>
+        <precio>60</precio>
+        <tiempoCrec>40</tiempoCrec>
+        <beneficio>2</beneficio>
+    </semilla>
+
+    <semilla sem = "ber">
+        <nombre>Berenjena</nombre>
+        <tipo>Vegetal</tipo>
+        <precio>70</precio>
+        <tiempoCrec>30</tiempoCrec>
+        <beneficio>4</beneficio>
+    </semilla>
+
+    <semilla sem = "mel">
+        <nombre>Melocotón</nombre>
+        <tipo>Frutal</tipo>
+        <precio>80</precio>
+        <tiempoCrec>90</tiempoCrec>
+        <beneficio>4</beneficio>
+    </semilla>
+
+    <semilla sem = "pla">
+        <nombre>Plátano</nombre>
+        <tipo>Frutal</tipo>
+        <precio>90</precio>
+        <tiempoCrec>120</tiempoCrec>
+        <beneficio>5</beneficio>
+    </semilla>
+
+    <semilla sem = "man">
+        <nombre>Manzana</nombre>
+        <tipo>Frutal</tipo>
+        <precio>100</precio>
+        <tiempoCrec>100</tiempoCrec>
+        <beneficio>6</beneficio>
+    </semilla>
+
+    <semilla sem = "fre">
+        <nombre>Fresa</nombre>
+        <tipo>Premium</tipo>
+        <precio>300</precio>
+        <tiempoCrec>10</tiempoCrec>
+        <beneficio>7</beneficio>
+    </semilla>
+
+    <semilla sem = "pin">
+        <nombre>Piña</nombre>
+        <tipo>Premium</tipo>
+        <precio>300</precio>
+        <tiempoCrec>10</tiempoCrec>
+        <beneficio>7</beneficio>
+    </semilla>
+
+    <!-- herramientas-->
+    <herramienta herr = "az1">
+        <denominacion>Azada</denominacion>
+        <coste>0</coste>
+        <usos>10</usos>
+        <nivel codigo = "n1">Básico</nivel>
+        <accion>sembrar</accion>
+    </herramienta>
+
+    <herramienta herr = "reg1">
+        <denominacion>Regadera</denominacion>
+        <coste>0</coste>
+        <usos>10</usos>
+        <nivel codigo = "n1">Básico</nivel>
+        <accion>regar</accion>
+    </herramienta>
+
+    <herramienta herr = "hoz1">
+        <denominacion>Hoz</denominacion>
+        <coste>0</coste>
+        <usos>10</usos>
+        <nivel codigo = "n1">Básico</nivel>
+        <accion>recoger</accion>
+    </herramienta>
+
+
+        <!-- bronce-->
+    <herramienta herr = "az2">
+        <denominacion>Azada</denominacion>
+        <coste>10</coste>
+        <usos>20</usos>
+        <nivel codigo = "n2">Bronce</nivel>
+        <accion>sembrar</accion>
+    </herramienta>
+
+    <herramienta herr = "reg2">
+        <denominacion>Regadera</denominacion>
+        <coste>10</coste>
+        <usos>20</usos>
+        <nivel codigo = "n2">Bronce</nivel>
+        <accion>regar</accion>
+    </herramienta>
+
+    <herramienta herr = "hoz2">
+        <denominacion>Hoz</denominacion>
+        <coste>10</coste>
+        <usos>20</usos>
+        <nivel codigo = "n2">Bronce</nivel>
+        <accion>recoger</accion>
+    </herramienta>
+
+        <!-- Plata-->
+    <herramienta herr = "az3">
+        <denominacion>Azada</denominacion>
+        <coste>50</coste>
+        <usos>30</usos>
+        <nivel codigo = "n3">Plata</nivel>
+        <accion>sembrar</accion>
+    </herramienta>
+
+    <herramienta herr = "reg3">
+        <denominacion>Regadera</denominacion>
+        <coste>50</coste>
+        <usos>30</usos>
+        <nivel codigo = "n3">Plata</nivel>
+        <accion>regar</accion>
+    </herramienta>
+
+    <herramienta herr = "hoz3">
+        <denominacion>Hoz</denominacion>
+        <coste>50</coste>
+        <usos>30</usos>
+        <nivel codigo = "n3">Plata</nivel>
+        <accion>recoger</accion>
+    </herramienta>
+
+        <!-- Oro-->
+    <herramienta herr = "az4">
+        <denominacion>Azada</denominacion>
+        <coste>100</coste>
+        <usos>40</usos>
+        <nivel codigo = "n4">Oro</nivel>
+        <accion>sembrar</accion>
+    </herramienta>
+
+    <herramienta herr = "reg4">
+        <denominacion>Regadera</denominacion>
+        <coste>100</coste>
+        <usos>40</usos>
+        <nivel codigo = "n4">Oro</nivel>
+        <accion>regar</accion>
+    </herramienta>
+
+    <herramienta herr = "hoz4">
+        <denominacion>Hoz</denominacion>
+        <coste>100</coste>
+        <usos>40</usos>
+        <nivel codigo = "n4">Oro</nivel>
+        <accion>recoger</accion>
+    </herramienta>
+</tienda>

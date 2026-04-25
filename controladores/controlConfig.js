@@ -19,9 +19,9 @@ const catalogo_compl = {
     v: [{ nombre: 'Calabaza', tiempoMadur: 60, cantFrutos: 3 },
         { nombre: 'Alcachofa', tiempoMadur: 40, cantFrutos: 2 },
         { nombre: 'Berenjena', tiempoMadur: 30, cantFrutos: 4 }],
-    f: [{ nombre: 'Melocotón', tiempoMadur: 90, cantFrutos: 2 },
+    f: [{ nombre: 'Melocotón', tiempoMadur: 90, cantFrutos: 4 },
         { nombre: 'Plátano', tiempoMadur: 120, cantFrutos: 5 },
-        { nombre: 'Manzana', tiempoMadur: 100, cantFrutos: 3 }]
+        { nombre: 'Manzana', tiempoMadur: 100, cantFrutos: 6 }]
 };
 catalogo_compl.m = [...catalogo_compl.v, ...catalogo_compl.f];
 
@@ -109,8 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-        btnStart.addEventListener('click', () => {
- 
+    btnStart.addEventListener('click', () => {
         const nombre = inputNombre.value.trim();
         const tipoSeleccionado = [...radios].find(r => r.checked)?.value;
         const semillaElegida = selectSemilla.value;
@@ -134,9 +133,9 @@ document.addEventListener('DOMContentLoaded', () => {
  
         const catalogo = catalogo_compl[tipoSeleccionado];
         const granjero = new Granjero(nombre, puntosDinero, puntosEnergia);
-        const granja = new Granja(granjero, catalogo, tipoSeleccionado);
+        const granja = new Granja(granjero, catalogo, tipoSeleccionado, semillaElegida);
  
         saveObject(granja);
-        window.location.href = './pantalla_juego.html';
+        window.location.href = './pantalla_juego.html';  
     });
 });

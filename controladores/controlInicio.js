@@ -1,4 +1,4 @@
-import { deleteSave, loadObject } from "../controladores/gestorAlmac.js";
+import { deleteSave, loadObject } from "./gestorAlmac.js";
 import Swal from "https://cdn.jsdelivr.net/npm/sweetalert2@11/+esm";
 
 function mostrarToast(icono, mensaje) {
@@ -14,13 +14,15 @@ function mostrarToast(icono, mensaje) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+
     const btnElim = document.querySelector('.btn-elim');
     const btnCont = document.querySelector('.btn-cont');
 
-    
     btnCont.addEventListener('click', () => {
         if (!loadObject()) 
             mostrarToast('error', 'No existe ninguna partida guardada');
+        else
+            window.location.href = '../paginas/pantalla_juego.html';
     });
 
     btnElim.addEventListener('click', () => {

@@ -1,0 +1,106 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+<!-- elementos-->
+
+<xs:element name="tienda">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element ref="semilla" maxOccurs="unbounded"></xs:element>
+            <xs:element ref="herramienta" maxOccurs="unbounded"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+
+<xs:element name="semilla">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element ref="nombre" minOccurs="1" maxOccurs="1"></xs:element>
+            <xs:element ref="tipo" minOccurs="1" maxOccurs="1"></xs:element>
+            <xs:element ref="precio" minOccurs="1" maxOccurs="1"></xs:element>
+            <xs:element ref="tiempoCrec" minOccurs="1" maxOccurs="1"></xs:element>
+            <xs:element ref="beneficio" minOccurs="1" maxOccurs="1"></xs:element>
+        </xs:sequence>
+        <xs:attribute ref="sem"></xs:attribute>
+    </xs:complexType>
+</xs:element>
+
+<xs:element name="nombre" type="xs:string"></xs:element>
+<xs:element name="tipo" type="xs:string"></xs:element>
+<xs:element name="precio" type="num"></xs:element>
+<xs:element name="tiempoCrec" type="num2"></xs:element>
+<xs:element name="beneficio" type="num"></xs:element>
+
+
+<!-- <coste>0</coste>
+        <usos>10</usos>
+        <nivel codigo = "n1">Básico</nivel>-->
+
+<xs:element name="herramienta">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element ref="denominacion" minOccurs="1" maxOccurs="1"></xs:element>
+            <xs:element ref="coste" minOccurs="1" maxOccurs="1"></xs:element>
+            <xs:element ref="usos" minOccurs="1" maxOccurs="1"></xs:element>
+            <xs:element ref="nivel" minOccurs="1" maxOccurs="1"></xs:element>
+            <xs:element ref="accion" minOccurs="1" maxOccurs="1"></xs:element>
+        </xs:sequence>
+        <xs:attribute ref="herr"></xs:attribute>
+    </xs:complexType>
+</xs:element>
+
+<xs:element name="denominacion" type="xs:string"></xs:element>
+<xs:element name="coste" type="num"></xs:element>
+<xs:element name="usos" type="num2"></xs:element>
+
+<xs:element name="nivel">
+    <xs:complexType>
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute ref="codigo"></xs:attribute>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+</xs:element>
+
+<xs:element name="accion" type="xs:string"></xs:element>
+
+<!-- atributos-->
+ <xs:attribute name="sem">
+    <xs:simpleType>
+        <xs:restriction base="xs:ID">
+            <xs:pattern value="[a-z]*"></xs:pattern>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:attribute>
+
+<xs:attribute name="herr">
+    <xs:simpleType>
+        <xs:restriction base="xs:ID">
+            <xs:pattern value="[a-z]*[0-9]*"></xs:pattern>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:attribute>
+
+<xs:attribute name="codigo" type="cod"></xs:attribute>
+
+<!-- tipos de datos-->
+<xs:simpleType name="num">
+    <xs:restriction base="xs:int">
+        <xs:minInclusive value="0"/>
+    </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="num2">
+    <xs:restriction base="xs:int">
+        <xs:minInclusive value="10"/>
+    </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="cod">
+    <xs:restriction base="xs:string">
+        <xs:pattern value="n[0-9]+"></xs:pattern>
+    </xs:restriction>
+</xs:simpleType>
+
+
+</xs:schema>

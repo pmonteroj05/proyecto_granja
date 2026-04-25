@@ -5,9 +5,65 @@
         <title>Tienda</title>
         <link rel="stylesheet" href="/style.css">
     </head>
-    <body>
+    <body id="tienda">
+        <div>
+            <a href="/paginas/pantalla_juego.html"><button class="volver"><img src="/recursos/tienda/flecha.png" alt="volver"></button></a>
+        </div>
+
+        <h1>TIENDA</h1>
+
+        <label for="dinero">Dinero disponible: <span id="dinT">0</span> €</label>
+
+        <div id="filtro">
+            <select id="filtro-select">
+                <option value="todos">Todas las semillas</option>
+                <option value="vegetal">Solo Vegetales</option>
+                <option value="frutal">Solo Frutales</option>
+                <option value="precio-asc">Más barato</option>
+                <option value="precio-desc">Más caro</option>
+                <option value="tiempo-asc">Menor tiempo de crecimiento</option>
+                <option value="tiempo-desc">Mayor tiempo de crecimiento</option>
+                <option value="benef-asc">Menor beneficio</option>
+                <option value="benef-desc">Mayor beneficio</option> 
+            </select>
+        </div>
+
+        <div id="productos">
+            <div id="plantas" class="seccion">
+                <p>SEMILLAS</p>
+                <div class="lista" id="listaSem"></div>
+            </div>
+
+            <div id="plantasCant" class="seccion">
+                <p>CANTIDAD DE SEMILLAS (10 semillas)</p>
+                <div class="lista" id="listaCantSem"></div>
+            </div>
+
+
+            <div id="uHerr" class="seccion">
+                <p>USOS DE HERRAMIENTAS (10 usos)</p>
+                <div class="lista" id="listaUsosHerr"></div>
+            </div>
+
+            <div id="nHerr" class="seccion">
+                <p>NIVEL DE HERRAMIENTAS</p>
+                <p>Nivel bronce</p>
+                <div class="lista" id="listaBronce"></div>
+                <br>
+                <p>Nivel plata</p>
+                <div class="lista" id="listaPlata"></div>
+                <br>
+                <p>Nivel oro</p>
+                <div class="lista" id="listaOro"></div>
+            </div>
+
+            <div id="plantasPremium" class="seccion">
+                <p>SEMILLAS PREMIUM</p>
+                <div class="lista" id="listaPremium"></div>
+            </div>
+        </div>
         
         
-    <script type="module" src=""></script>
+    <script type="module" src="/controladores/controlTienda.js"></script>
     </body>
 </html>

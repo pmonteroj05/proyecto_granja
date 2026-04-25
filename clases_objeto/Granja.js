@@ -7,16 +7,17 @@ export default class Granja{
     #inventarioSemillas;  
     #parcelas;            
     #frutosRecogidos;
-    #tipoCultivo;       
+    #tipoCultivo;
+    #semillaInicial;       
  
-    constructor(granjero, catalogo = [], tipoCultivo = 'm') {
+    constructor(granjero, catalogo = [], tipoCultivo = null, semillaInicial = null) {
         this.#granjero = granjero;
- 
         this.#catalogo = catalogo;
- 
+        this.#tipoCultivo = tipoCultivo;
+        this.#semillaInicial = semillaInicial;
         this.#inventarioSemillas = catalogo.map(p => ({
             nombre: p.nombre,
-            cantidad: 10
+            cantidad: (p.nombre === semillaInicial) ? 10 : 0
         }));
  
         this.#parcelas = Array(16).fill(null);
@@ -54,6 +55,10 @@ export default class Granja{
     get tipoCultivo(){
         return this.#tipoCultivo;
     }
+
+    get semillaInicial(){
+        return this.#semillaInicial;
+    }
  
     sembrar(indiceParcela, nombreSemilla) {
         if (this.#parcelas[indiceParcela] !== null)
@@ -71,7 +76,7 @@ export default class Granja{
             return{
                 ocup: false
             };
- 
+
         const plantilla = this.#catalogo.find(p => p.nombre === nombreSemilla);
         const nueva = new Planta(plantilla.nombre, plantilla.tiempoMadur, plantilla.cantFrutos);
         nueva.sembrar();
@@ -79,6 +84,31 @@ export default class Granja{
         this.#parcelas[indiceParcela] = nueva;
         semInv.cantidad--;
  
+        this.#granjero.perderenergia(1);
+        return{
+            ocup: true
+        };
+    }
+
+    regar(indiceParcela) {
+        const planta = this.#parcelas[indiceParcela];
+        if (!planta)
+            return{
+                ocup: false 
+            };
+
+        if (planta.estado === 'inicial' || planta.estado === 'madura')
+            return{
+                ocup: false
+            };
+
+        if (!this.#granjero.regadera.usar())
+            return {
+                ocup: false
+            };
+
+        const nivel = this.#granjero.regadera.nivel;
+        planta.regar(nivel);
         this.#granjero.perderenergia(1);
         return{
             ocup: true

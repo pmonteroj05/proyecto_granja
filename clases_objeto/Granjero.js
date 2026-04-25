@@ -11,9 +11,9 @@ export default class Granjero{
         this.#nombre = nombre;
         this.#dinero = dinero;
         this.#energia = energia;
-        this.#azada = new Herramienta('Azada', 20, 100);
-        this.#hoz = new Herramienta('Hoz', 20, 100);
-        this.#regadera = new Herramienta('Regadera', 20, 100);
+        this.#azada = new Herramienta('Azada', 0, 10);
+        this.#hoz = new Herramienta('Hoz', 0, 10);
+        this.#regadera = new Herramienta('Regadera', 0, 10);
     }
 
     get nombre(){

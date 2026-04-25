@@ -41,14 +41,6 @@ export default class Planta{
         this.#estado = estado;
     }
 
-    sembrar() {
-        if (this.#estado !== 'inicial') 
-            return false;
-        this.#fechaSiembra = Date.now();
-        this.#estado = 'plantada';
-        return true;
-    }
-
     actualizarEstado() {
         if (this.#estado === 'inicial' || this.#estado === 'madura') 
             return;
@@ -58,6 +50,23 @@ export default class Planta{
         else if (transcurrido >= this.#tiempoMadur / 2)
             this.#estado = 'creciendo';
     }
+
+    sembrar() {
+        if (this.#estado !== 'inicial') 
+            return false;
+        this.#fechaSiembra = Date.now();
+        this.#estado = 'plantada';
+        return true;
+    }
+
+    regar() {
+    if (this.#estado === 'inicial' || this.#estado === 'madura')
+        return false;
+    const reduccion = this.#tiempoMadur * 0.1;
+    this.#fechaSiembra -= reduccion * 1000;
+    return true;
+    }
+
 
     recoger() {
         if (this.#estado !== 'madura') 

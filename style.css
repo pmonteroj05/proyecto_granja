@@ -1,3 +1,20 @@
+:root {
+  --verde-claro: #d4edda;
+  --verde: #008000;
+  --verde-medio: #2e8b57;
+  --verde-oscuro: #004d00;
+  --ambar: #ffbf00;
+  --rojo: #dc3545;
+  --violeta: #9370db;
+  --negro: #000000;
+  --blanco: #ffffff;
+  --beige: #f5f5dc;
+  --gris-oscuro: #3f3f3f;
+  --gris: #808080;
+  --sombra: #00000099;
+}
+
+
 /*General*/
 body{
     font-family: sans-serif;
@@ -14,6 +31,9 @@ body{
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    padding: 8%;
+    position: relative;
+    z-index: 0;
 }
 
 #inicial > div{
@@ -21,15 +41,19 @@ body{
     margin-bottom: 115px;
     width: 600px;
     height: 500px;
-    padding: 50px;
-    border: 3px solid green;
+    padding: 60px;
+    border: 3px solid var(--verde);
     border-radius: 6px;
-    background-color:beige;
+    background-color: var(--beige);
     justify-content: center;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    gap: 50px;
 }
 
-#inicial div {
+.menu-box {
     display: flex;
     flex-direction: column; 
     justify-content: center; 
@@ -37,34 +61,42 @@ body{
     gap: 50px;                   
 }
 
-#inicial div button {
+#inicial div button{
     width: 350px;
     padding: 15px;
     font-size: 20px;
     border: none;
     border-radius: 5px;     
-    color: black;
+    color: var(--negro);
 }
 
 .btn-nueva{
-    background:#28a745;
+    background: var(--verde);
 }   
 .btn-cont{
-    background:#ffbf00;
+    background:var(--ambar);
 }  
 .btn-elim{
-    background:#dc3545;
+    background:var(--rojo);
 }   
 .btn-repos{
-    background:#9370db;
+    background: var(--violeta);
 } 
 
 #inicial div button:hover{
-    background-color: black;
-    color: white;
+    background-color: var(--negro);
+    color: var(--blanco);
     transition-duration: 1.5s;
     transform: scale(1.2);
 }
+
+.swal2-container {
+    z-index: 999999 !important;
+    background-color: transparent !important;
+    border: none !important;
+    backdrop-filter: none !important;
+}
+
 
 /*pantalla de juego*/
 body#juego {
@@ -85,10 +117,10 @@ body#juego h1 {
     flex-direction: row;
     justify-content: center;
     justify-self: start;
-    color: #2e8b57;
+    color: var(--verde);
     width: 100%;
     height: 15%;
-    background-color: blanchedalmond;
+    background-color: var(--beige);
 }
 
 #contenedor {
@@ -107,8 +139,8 @@ body#juego h1 {
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    border: 1px solid black;
-    background-color: white;
+    border: 1px solid var(--negro);
+    background-color: var(--blanco);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -130,8 +162,8 @@ body#juego h1 {
     top: 25%;          
     display: flex;
     flex-direction: column;
-    background-color:antiquewhite;
-    border: 1px solid grey;
+    background-color: var(--beige);
+    border: 1px solid var(--gris);
     border-radius: 10px;
     padding: 12px 10px;
     width: 300px;
@@ -141,20 +173,118 @@ body#juego h1 {
 #infoGranj p {
     font-size: 20px;
     font-weight: bold;
-    color: #2e8b57;
+    color: var(--verde);
     text-align:justify;
     margin: 4px 0 2px;
+}
+
+.manejo {
+    position: fixed;
+    right: 2%;
+    top: 15%;         
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background-color: var(--beige);
+    border: 1px solid var(--gris);
+    border-radius: 10px;
+    padding: 12px 10px;
+    width: 350px;
+    box-sizing: border-box;
+    z-index: 5;
+}
+
+.botones-semillas {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+    min-height: 70px;
+}
+
+.botones-semillas .btn-semilla {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid var(--verde);
+    background-color: var(--blanco);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    padding: 0;
+}
+
+.botones-semillas .btn-semilla:hover {
+    transform: scale(1.1);
+    border-color: var(--verde-oscuro);
+}
+
+.botones-semillas .btn-semilla.selected {
+    border-color: var(--verde-oscuro);
+    box-shadow: 0 0 10px var(--verde);
+    background-color: var(--verde-claro);
+}
+
+.botones-semillas .btn-semilla img {
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+}
+
+.botones-herr {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+    border-top: 1px solid var(--gris);
+}
+
+.botones-herr button {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid var(--negro);
+    background-color: var(--blanco);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    padding: 0;
+}
+
+.botones-herr button:hover {
+    transform: scale(1.1);
+}
+
+.botones-herr button.active {
+    border-color: var(--verde);
+    box-shadow: 0 0 12px var(--verde);
+    background-color: var(--verde-claro);
+}
+
+.botones-herr button img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
 }
 
 .inventario {
     position: fixed;
     right: 2%;
-    top: 10%;           
+    top: auto;
+    bottom: 37%;           
     display: flex;
     flex-direction: column;
     gap: 12px;
-    background-color: antiquewhite;
-    border: 1px solid grey;
+    background-color: var(--beige);
+    border: 1px solid var(--gris);
     border-radius: 10px;
     padding: 12px 10px;
     width: 350px;
@@ -164,7 +294,7 @@ body#juego h1 {
 .inventario p {
     font-size: 20px;
     font-weight: bold;
-    color: #2e8b57;
+    color: var(--verde);
     text-align: center;
     margin: 4px 0 2px;
 }
@@ -173,8 +303,8 @@ body#juego h1 {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    border: 1px solid black;
-    background-color: white;
+    border: 1px solid var(--negro);
+    background-color: var(--blanco);
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -214,7 +344,7 @@ body#juego h1 {
  
 .inventario ul li span {
     font-weight: bold;
-    color: #333;
+    color: var(--gris-oscuro);
     min-width: 20px;
     text-align: center;
 }
@@ -225,8 +355,12 @@ body#juego h1 {
     grid-template-rows: repeat(4, 1fr);
     gap: 2px;
     width: 80%;
+    max-width: 600px;
     aspect-ratio: 1;
     margin: 20px auto;
+    position: relative;
+    margin-top: 20px;
+    z-index: 1;
 }
 
 .filaA, .filaB, .filaC, .filaD {
@@ -234,42 +368,46 @@ body#juego h1 {
 }
 
 button.parcela{
-    display: block;
+    position: relative;
     width: 100%;
     height: 100%;
     padding: 0;
-    position: relative;
     border: none;
     background: transparent;
+    background-size: cover;
+    background-position: center;
     cursor: pointer;
+    overflow: hidden;
+    aspect-ratio: 1;
+    justify-content: center;
+    align-self: center;
 }
 
 .celda-vista {
-    display: block;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: white;
-    background-image: url('/recursos/pantalla_juego/sin_semilla.jpg');
-    background-size: cover;
-    background-position: center;
-    border: none;
+    overflow: hidden;
     pointer-events: none; 
 }
 
-.celda-vista .img-planta {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 60px;
-    height: 60px;
+.celda-vista img {
+    width: 100%;
+    height: 100%;
     object-fit: contain;
-    background: transparent;
-    z-index: 1;
-    pointer-events: none;
+    z-index: 5;
+}
+
+.celda-vista img.img-planta {
+    width: 60px !important;
+    height: 60px !important;
+    object-fit: contain !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: 10 !important;
 }
 
 #guardados {
@@ -283,7 +421,7 @@ button.parcela{
     gap: 50px;
     width: 100%;
     height: 5%;
-    background-color: blanchedalmond;
+    background-color: var(--beige);
     padding-bottom: 25px;
     padding-top: 25px;
 }
@@ -294,8 +432,8 @@ body#juego .btn-cont {
     height: 40px;
     border-radius: 25px;
     border: none;
-    background-color: #2e8b57;
-    color: white;
+    background-color: var(--verde);
+    color: var(--blanco);
     font-size: 16px;
     cursor: pointer;
     display: flex;
@@ -305,7 +443,7 @@ body#juego .btn-cont {
  
 body#juego .btn-save:hover,
 body#juego .btn-cont:hover {
-    background-color: #1b5e20;
+    background-color: var(--verde-oscuro);
 }
 
 
@@ -314,18 +452,20 @@ body#configuracion {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
     background-image: url(/recursos/menu_principal/granja_fondo.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    padding: 8%;
 }
 
 #formulario-config {
-    background-color: white;
-    border: 3px solid #2e8b57;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    background-color: var(--beige);
+    border: 3px solid var(--verde);
     border-radius: 10px;
-    padding: 40px 50px;
+    padding: 40px 40px;
     width: 550px;
     display: flex;
     flex-direction: column;
@@ -335,7 +475,7 @@ body#configuracion {
 
 #formulario-config h1 {
     text-align: center;
-    color: #2e8b57;
+    color: var(--verde);
     font-size: 24px;
     margin: 0 0 8px 0;
 }
@@ -356,7 +496,7 @@ body#configuracion {
 .campo input[type="text"],
 .campo select {
     padding: 10px 12px;
-    border: 2px solid #2e8b57;
+    border: 2px solid var(--verde);
     border-radius: 6px;
     font-size: 15px;
     outline: none;
@@ -365,13 +505,13 @@ body#configuracion {
 
 .campo input[type="text"]:focus,
 .campo select:focus {
-    border-color: #1b5e20;
+    border-color: var(--verde-oscuro);
 }
 
 .campo select:disabled {
-    background-color: #f0f0f0;
-    border-color: #aaa;
-    color: #888;
+    background-color: var(--blanco);
+    border-color: var(--gris);
+    color: var(--gris-oscuro);
     cursor: not-allowed;
 }
 
@@ -390,7 +530,7 @@ body#configuracion {
 }
 
 .campo input[type="radio"] {
-    accent-color: #2e8b57;
+    accent-color: var(--verde);
     width: 16px;
     height: 16px;
 }
@@ -405,11 +545,11 @@ body#configuracion {
     display: flex;
     justify-content: space-between;
     font-weight: bold;
-    color: #333;
+    color: var(--gris-oscuro);
 }
 
 #valores > .puntos-header span {
-    color: #2e8b57;
+    color: var(--verde);
     font-size: 16px;
 }
 
@@ -422,7 +562,7 @@ body#configuracion {
 .stat-row label {
     width: 65px;
     font-weight: bold;
-    color: #333;
+    color: var(--gris-oscuro);
     flex-shrink: 0;
 }
 
@@ -432,8 +572,8 @@ body#configuracion {
     height: 30px;
     border: none;
     border-radius: 50%;
-    background-color: #2e8b57;
-    color: white;
+    background-color: var(--verde);
+    color: var(--blanco);
     font-size: 18px;
     font-weight: bold;
     cursor: pointer;
@@ -446,13 +586,13 @@ body#configuracion {
 
 .stat-row .btn-menos:hover,
 .stat-row .btn-mas:hover {
-    background-color: #1b5e20;
+    background-color: var(--verde-oscuro);
 }
 
 .barra-wrap {
     flex: 1;
     height: 12px;
-    background-color: #d4edda;
+    background-color: var(--verde-claro);
     border-radius: 6px;
     overflow: hidden;
     cursor: pointer;
@@ -461,7 +601,7 @@ body#configuracion {
 
 .barra {
     height: 100%;
-    background-color: #2e8b57;
+    background-color: var(--verde-medio);
     border-radius: 6px;
     transition: width 0.15s ease;
     pointer-events: none;
@@ -471,7 +611,7 @@ body#configuracion {
     width: 30px;
     text-align: right;
     font-weight: bold;
-    color: #2e8b57;
+    color: var(--verde);
     flex-shrink: 0;
 }
 
@@ -481,8 +621,8 @@ body#configuracion {
     padding: 14px;
     font-size: 17px;
     font-weight: bold;
-    background-color: #28a745;
-    color: white;
+    background-color: var(--verde);
+    color: var(--blanco);
     border: none;
     border-radius: 6px;
     cursor: pointer;
@@ -491,6 +631,372 @@ body#configuracion {
 }
 
 .btn-start:hover {
-    background-color: #1b5e20;
+    background-color: var(--verde-oscuro);
     transform: scale(1.05);
+}
+
+
+/*pantalla de tienda*/
+body#tienda{
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+    background-image: url('/recursos/menu_principal/granja_fondo.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+ 
+body#tienda > div:first-child {
+    align-self: flex-start;
+    padding: 12px 20px;
+}
+
+body#tienda > h1 {
+    color: var(--verde);
+    font-size: medium; 
+    margin: 0 0 4px; 
+}
+
+body#tienda > label{
+    font-weight: bold; 
+    color: var(--verde-oscuro); 
+    background:var(--verde-claro); 
+    border:2px solid var(--verde); 
+    border-radius:20px; 
+    padding:5px 14px; 
+    margin-bottom:10px; 
+}
+ 
+.volver{
+    width: 55px; 
+    height: 55px; 
+    border-radius: 50%; 
+    border: 2px solid var(--negro); 
+    background: var(--blanco); 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    cursor: pointer; 
+}
+
+.volver img{
+    width:30px; 
+    height:30px; 
+    object-fit: contain;
+}
+ 
+#filtro{
+    width: 90%; 
+    max-width: 1100px; 
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+    margin: 10px 0; 
+    padding: 10px 16px; 
+    background:var(--beige); 
+    border:2px solid var(--verde); 
+    border-radius:8px; 
+    box-sizing:border-box; 
+}
+
+#filtro-select{
+    padding:7px 12px; 
+    border:2px solid var(--verde); 
+    border-radius:6px; 
+    background:var(--blanco); 
+    font-size:.9rem; 
+    cursor:pointer; 
+    min-width:220px;
+}
+
+#filtro-select:focus { 
+    outline:none; 
+    border-color:var(--verde-oscuro); 
+}
+ 
+#productos{
+    width:90%; 
+    max-width:1100px; 
+    display:flex; 
+    flex-direction:column; 
+    gap:18px; }
+
+.seccion { 
+    background:var(--beige); 
+    border:3px solid var(--verde); 
+    border-radius:10px; 
+    padding:16px 20px; 
+}
+
+.seccion > p { 
+    font-weight:bold; 
+    color:var(--verde); 
+    border-bottom:2px solid var(--verde-claro); 
+    padding-bottom:4px; 
+    margin:0 0 10px; 
+}
+ 
+.lista { 
+    display:flex; 
+    flex-wrap:wrap; 
+    gap:10px; 
+}
+ 
+.card { 
+    position:relative; 
+    display:flex; 
+    flex-direction:column; 
+    align-items:center; 
+    gap:4px; 
+    background:var(--blanco); 
+    border:2px solid var(--verde-claro); 
+    border-radius:10px; 
+    padding:10px 8px; 
+    width:138px; 
+    box-sizing:border-box; 
+    overflow:hidden; 
+    transition:transform .15s, border-color .15s; 
+}
+
+.card:not(.bloqueado):hover { 
+    transform:translateY(-3px); 
+    border-color:var(--verde); 
+}
+
+.card img { 
+    width:48px; 
+    height:48px; 
+    object-fit:contain; }
+
+.card p{ 
+    font-weight:bold; 
+    font-size:.84rem; 
+    margin:0; 
+    text-align:center; 
+}
+
+.card-info{
+    display:flex; 
+    flex-direction:column; 
+    width:100%; font-size:.74rem; 
+    color:var(--gris-oscuro); 
+    padding:0 2px; gap:1px; 
+}
+
+.btn-comprar{
+    margin-top:5px; 
+    width:100%; 
+    padding:5px 0; 
+    border:none; 
+    border-radius:6px; 
+    background:var(--verde); 
+    color:var(--blanco); 
+    font-size:.74rem; 
+    font-weight:bold; 
+    cursor:pointer; 
+}
+
+.btn-comprar:hover{ 
+    background:var(--verde-oscuro); 
+}
+
+.tag{
+    font-size:.68rem; 
+    font-weight:bold; 
+    border-radius:10px; 
+    padding:1px 7px; 
+    text-transform:uppercase; 
+}
+
+.tipo-vegetal{ 
+    background:var(--verde-claro); 
+    color:var(--verde-oscuro); 
+}
+
+.tipo-frutal{ 
+    background:#ffd9a0; 
+    color:#7a4500; 
+}
+
+.tipo-premium{
+    background:#e8d4ff; 
+    color:var(--violeta); }
+ 
+.bloqueado{
+    border-color:var(--gris);
+}
+
+.overlay{
+    position: absolute; 
+    background: var(--gris); 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content:center; 
+    gap:4px; 
+    border-radius:8px; 
+    padding:6px; 
+    text-align:center; 
+}
+
+.overlay span {
+    font-size:1.5rem;
+}
+
+.overlay p{
+    color:var(--blanco); 
+    font-size:.68rem; 
+    font-weight:bold; 
+    line-height:1.3; 
+    text-shadow:0 1px 2px var(--sombra);
+}
+
+#uHerr button {
+    border: 2px solid var(--verde);
+    border-radius: 8px;
+    background: var(--blanco);
+    transition: all 0.2s;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#uHerr button:hover {
+    transform: scale(1.05);
+}
+
+#bronce {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+#bronce button {
+    border: 2px solid #cd7f32;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #f4e3c1 0%, #e8d4b0 100%);
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#plata {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+#plata button {
+    border: 2px solid #aaa;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #e8e8e8 0%, #d0d0d0 100%);
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#oro {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+#oro button {
+    border: 2px solid #ffd700;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #fff6cc 0%, #ffd700 100%);
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#lista-premium {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+#lista-premium li button {
+    opacity: 0.5;
+    filter: grayscale(0.8);
+    border: 2px solid var(--gris);
+    border-radius: 8px;
+    background: #cccccc;
+    cursor: not-allowed;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#lista-premium li button.unlocked {
+    opacity: 1;
+    filter: none;
+    border-color: var(--violeta);
+    background: var(--blanco);
+    cursor: pointer;
+}
+
+#lista-premium li button.unlocked:hover {
+    transform: scale(1.05);
+    background: #e8d4ff;
+}
+
+#nHerr .card {
+    border-radius: 8px;
+    border-width: 2px;
+}
+
+#nHerr #bronce .card {
+    border-radius: 8px;
+    border-color: #cd7f32;
+}
+
+#nHerr #plata .card {
+    border-radius: 8px;
+    border-color: #aaa;
+}
+
+#nHerr #oro .card {
+    border-radius: 8px;
+    border-color: #ffd700;
+}
+
+.card.bloqueado .overlay {
+    background: rgba(63, 63, 63, 0.85);
+}
+
+.tag.nivel-bronce {
+    border-radius: 8px;
+    background: #f4e3c1;
+    color: #7a4a00;
+    border: 1px solid #cd7f32;
+}
+
+.tag.nivel-plata {
+    border-radius: 8px;
+    background: #e8e8e8;
+    color: #555;
+    border: 1px solid #aaa;
+}
+
+.tag.nivel-oro {
+    border-radius: 8px;
+    background: #fff6cc;
+    color: #7a6000;
+    border: 1px solid #ffd700;
 }
