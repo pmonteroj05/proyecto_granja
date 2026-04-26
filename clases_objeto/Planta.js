@@ -59,12 +59,12 @@ export default class Planta{
         return true;
     }
 
-    regar() {
-    if (this.#estado === 'inicial' || this.#estado === 'madura')
-        return false;
-    const reduccion = this.#tiempoMadur * 0.1;
-    this.#fechaSiembra -= reduccion * 1000;
-    return true;
+    regar(nivel = 1) {
+        if (this.#estado === 'inicial' || this.#estado === 'madura')
+            return false;
+        const reduccion = this.#tiempoMadur * 0.1 * nivel;
+        this.#fechaSiembra -= reduccion * 1000;
+        return true;
     }
 
 

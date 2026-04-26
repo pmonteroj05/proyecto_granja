@@ -70,23 +70,31 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     rowDinero.querySelector('.btn-menos').addEventListener('click', () => {
-        if (puntosDinero > min_puntos)
-            puntosDinero--; actualizarBarras();
+        if (puntosDinero > min_puntos){
+            puntosDinero--; 
+            actualizarBarras();
+        }
     });
 
     rowDinero.querySelector('.btn-mas').addEventListener('click', () => {
-        if (puntosDinero < max_puntos)
-            puntosDinero++; actualizarBarras();
+        if (puntosDinero < max_puntos){
+            puntosDinero++; 
+            actualizarBarras();
+        }
     });
     
     rowEnergia.querySelector('.btn-menos').addEventListener('click', () => {
-        if (puntosDinero < max_puntos)
-            puntosDinero++; actualizarBarras();
+        if (puntosDinero < max_puntos){
+            puntosDinero++; 
+            actualizarBarras();
+        }
     });
 
     rowEnergia.querySelector('.btn-mas').addEventListener('click', () => {
-        if (puntosDinero > min_puntos)
-            puntosDinero--; actualizarBarras();
+        if (puntosDinero > min_puntos){
+            puntosDinero--; 
+            actualizarBarras();
+        }
     });
  
     actualizarBarras();

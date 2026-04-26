@@ -1,6 +1,6 @@
 import Swal from "https://cdn.jsdelivr.net/npm/sweetalert2@11/+esm";
 import {loadObject, saveObject} from "../controladores/gestorAlmac.js";
-import {filtrosXPath, cargarSem, cargarHerNivel, aplicarOrden, filtrarTipo} from "../controladores/lectorXML.js";
+import {filtrosXPath, cargarSem, cargarHerNivel, aplicarOrden, filtrarTipo} from "./lectorxml.js";
 
 
 function mostrarToast(icono, mensaje) {
@@ -16,20 +16,20 @@ function mostrarToast(icono, mensaje) {
 }
   
 const img_sem = {
-  'Calabaza': '/recursos/pantalla_juego/calabaza.png',
-  'Alcachofa': '/recursos/pantalla_juego/alcachofa.png',
-  'Berenjena': '/recursos/pantalla_juego/berenjena.png',
-  'Melocotón': '/recursos/pantalla_juego/melocoton.png',
-  'Plátano': '/recursos/pantalla_juego/platano.png',
-  'Manzana': '/recursos/pantalla_juego/manzana.png',
-  'Fresa': '/recursos/tienda/fresa.png',
-  'Piña': '/recursos/tienda/pineapple.png'
+  'Calabaza': '../recursos/pantalla_juego/calabaza.png',
+  'Alcachofa': '../recursos/pantalla_juego/alcachofa.png',
+  'Berenjena': '../recursos/pantalla_juego/berenjena.png',
+  'Melocotón': '../recursos/pantalla_juego/melocoton.png',
+  'Plátano': '../recursos/pantalla_juego/platano.png',
+  'Manzana': '../recursos/pantalla_juego/manzana.png',
+  'Fresa': '../recursos/tienda/fresa.png',
+  'Piña': '../recursos/tienda/pineapple.png'
 };
 
 const img_herr = {
-  'Azada': '/recursos/pantalla_juego/azada.png',
-  'Hoz': '/recursos/pantalla_juego/hoz.png',
-  'Regadera': '/recursos/pantalla_juego/regadera.png'
+  'Azada': '../recursos/pantalla_juego/azada.png',
+  'Hoz': '../recursos/pantalla_juego/hoz.png',
+  'Regadera': '../recursos/pantalla_juego/regadera.png'
 };
 
 const acciones = {sembrar: 'azada', regar: 'regadera', recoger: 'hoz'};
@@ -257,6 +257,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     granja.granjero.perderDinero(10);
+    granja.granjero.ganarEnergia(10)
     herrGranja(granja, den_acc[denominacion]).recargarUsos(10);
     
     saveObject(granja);
@@ -277,7 +278,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     granja.granjero.perderDinero(h.coste);
+    granja.granjero.ganarEnergia(10)
     herr.subirNivel();
+    herr.recargarUsos(h.usos)
     
     saveObject(granja);
     reRender();

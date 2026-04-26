@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!loadObject()) 
             mostrarToast('error', 'No existe ninguna partida guardada');
         else
-            window.location.href = '../paginas/pantalla_juego.html';
+            window.location.href = 'paginas/pantalla_juego.html';
     });
 
     btnElim.addEventListener('click', () => {

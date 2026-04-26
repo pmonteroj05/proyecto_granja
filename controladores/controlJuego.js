@@ -31,20 +31,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const imagenesSemillas = {
-        'Calabaza': '/recursos/pantalla_juego/calabaza.png',
-        'Alcachofa': '/recursos/pantalla_juego/alcachofa.png',
-        'Berenjena': '/recursos/pantalla_juego/berenjena.png',
-        'Melocotón': '/recursos/pantalla_juego/melocoton.png',
-        'Plátano': '/recursos/pantalla_juego/platano.png',
-        'Manzana': '/recursos/pantalla_juego/manzana.png',
-        'Fresa': '/recursos/tienda/fresa.png',
-        'Piña': '/recursos/tienda/pineapple.png'
+        'Calabaza': '../recursos/pantalla_juego/calabaza.png',
+        'Alcachofa': '../recursos/pantalla_juego/alcachofa.png',
+        'Berenjena': '../recursos/pantalla_juego/berenjena.png',
+        'Melocotón': '../recursos/pantalla_juego/melocoton.png',
+        'Plátano': '../recursos/pantalla_juego/platano.png',
+        'Manzana': '../recursos/pantalla_juego/manzana.png',
+        'Fresa': '../recursos/tienda/fresa.png',
+        'Piña': '../recursos/tienda/pineapple.png'
     };
 
     const imagenesEstados = {
-        'plantada': '/recursos/pantalla_juego/plantada.jpg',
-        'creciendo': '/recursos/pantalla_juego/creciendo.jpg',
-        'sinSemilla': '/recursos/pantalla_juego/sin_semilla.jpg'
+        'plantada': '../recursos/pantalla_juego/plantada.jpg',
+        'creciendo': '../recursos/pantalla_juego/creciendo.jpg',
+        'sinSemilla': '../recursos/pantalla_juego/sin_semilla.jpg'
     };
 
     const spanNombre = document.getElementById('nombre-granjero');
@@ -188,7 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 btn.title = `${sem.nombre} (${sem.cantidad})`;
                 
                 const img = document.createElement('img');
-                img.src = imagenesSemillas[sem.nombre] || '/recursos/pantalla_juego/calabaza.png';
+                img.src = imagenesSemillas[sem.nombre] || '../recursos/pantalla_juego/calabaza.png';
                 img.alt = sem.nombre;
                 
                 btn.appendChild(img);

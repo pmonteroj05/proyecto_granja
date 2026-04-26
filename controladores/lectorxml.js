@@ -1,4 +1,4 @@
-const URL_XML = "/datos/tienda.xml";
+const URL_XML = "../datos/tienda.xml";
 
 export const filtrosXPath = {
     todos: "//semilla",
