@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'Melocotón': '../recursos/pantalla_juego/melocoton.png',
         'Plátano': '../recursos/pantalla_juego/platano.png',
         'Manzana': '../recursos/pantalla_juego/manzana.png',
+        'Limon': '../recursos/defensa/limon.png',
         'Fresa': '../recursos/tienda/fresa.png',
         'Piña': '../recursos/tienda/pineapple.png'
     };
@@ -254,16 +255,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if(btnRegadera) {
         btnRegadera.addEventListener('click', () => {
-            herramientaActiva = 'regadera';
-            modoRiego = true;
             semillaSeleccionada = null;
-            btnRegadera.classList.add('active');
-            if(btnAzada) 
-                btnAzada.classList.remove('active');
-            if(btnHoz) 
-                btnHoz.classList.remove('active');
-            if(contenedorSemillas) 
-                contenedorSemillas.querySelectorAll('.btn-semilla').forEach(b => b.classList.remove('selected'));
+            herramientaActiva = 'regadera';
+            if(!granja.granjero.regadera.romper()){
+                btnRegadera.classList.remove('active');
+                modoRiego = false;
+                mostrarToast('error', 'Herraminta rota');
+            }else{
+                modoRiego = true;
+                btnRegadera.classList.add('active');
+                if(btnAzada) 
+                    btnAzada.classList.remove('active');
+                if(btnHoz) 
+                    btnHoz.classList.remove('active');
+                if(contenedorSemillas) 
+                    contenedorSemillas.querySelectorAll('.btn-semilla').forEach(b => b.classList.remove('selected'));
+            } 
         });
     }
 
@@ -273,7 +280,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const planta = granja.parcelas[indice];
 
             if (herramientaActiva === 'regadera' || modoRiego) {
-                if (!planta) {
+                if (!planta || granja.granjero.regadera.romper()) {
                     mostrarToast('error', 'No hay nada que regar aquí');
                     return;
                 }

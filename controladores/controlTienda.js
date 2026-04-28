@@ -1,6 +1,7 @@
 import Swal from "https://cdn.jsdelivr.net/npm/sweetalert2@11/+esm";
 import {loadObject, saveObject} from "../controladores/gestorAlmac.js";
 import {filtrosXPath, cargarSem, cargarHerNivel, aplicarOrden, filtrarTipo} from "./lectorxml.js";
+import Herramienta from "../clases_objeto/Herramienta.js";
 
 
 function mostrarToast(icono, mensaje) {
@@ -22,6 +23,7 @@ const img_sem = {
   'Melocotón': '../recursos/pantalla_juego/melocoton.png',
   'Plátano': '../recursos/pantalla_juego/platano.png',
   'Manzana': '../recursos/pantalla_juego/manzana.png',
+  'Limon': '../recursos/defensa/limon.png',
   'Fresa': '../recursos/tienda/fresa.png',
   'Piña': '../recursos/tienda/pineapple.png'
 };
@@ -263,6 +265,21 @@ document.addEventListener('DOMContentLoaded', () => {
     saveObject(granja);
     reRender();
     mostrarToast('success', `+ 10 usos para ${denominacion}`);
+  }
+
+    function repararHerramienta(denominacion, coste) {
+    if(granja.granjero.dinero < coste){
+      mostrarToast('error', 'No tienes suficiente dinero para reparar');
+      return;
+    }
+
+    granja.granjero.perderDinero(coste);
+    const herr = herrGranja(granja, den_acc["Regadera"]);
+    herr.reparar(); 
+    
+    saveObject(granja);
+    reRender();
+    mostrarToast('success', 'Regadera reparada correctamente');
   }
  
   function subirNivel(h, nivelNum){

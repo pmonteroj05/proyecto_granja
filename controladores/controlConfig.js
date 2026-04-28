@@ -21,7 +21,8 @@ const catalogo_compl = {
         { nombre: 'Berenjena', tiempoMadur: 30, cantFrutos: 4 }],
     f: [{ nombre: 'Melocotón', tiempoMadur: 90, cantFrutos: 4 },
         { nombre: 'Plátano', tiempoMadur: 120, cantFrutos: 5 },
-        { nombre: 'Manzana', tiempoMadur: 100, cantFrutos: 6 }]
+        { nombre: 'Manzana', tiempoMadur: 100, cantFrutos: 6 },
+        {nombre: 'Limon', tiempoMadur: 100, cantFrutos: 6}]
 };
 catalogo_compl.m = [...catalogo_compl.v, ...catalogo_compl.f];
 

@@ -40,6 +40,18 @@ export default class Herramienta{
         return true;
     }
 
+    romper(){
+        if(this.#usos <= 5)
+            return true;
+        else
+            return false;
+    }
+
+    recuperar(){
+        if(this.romper)
+            this.#precio = 200;
+    }
+
     recargarUsos(cantidad) {
         this.#usos = Math.min(this.#usos + cantidad, this.usosMax);
     }

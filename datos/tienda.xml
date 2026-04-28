@@ -50,6 +50,14 @@
         <beneficio>6</beneficio>
     </semilla>
 
+    <semilla sem = "lim">
+        <nombre>Limon</nombre>
+        <tipo>Frutal</tipo>
+        <precio>20</precio>
+        <tiempoCrec>100</tiempoCrec>
+        <beneficio>6</beneficio>
+    </semilla>
+
     <semilla sem = "fre">
         <nombre>Fresa</nombre>
         <tipo>Premium</tipo>
